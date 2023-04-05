@@ -50,6 +50,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Método para que la contraseña se guarde con hash
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     /**
      * The accessors to append to the model's array form.
      *
