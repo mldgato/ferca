@@ -311,7 +311,7 @@ return [
                     'route'  => 'admin.stocktaking.suppliers.index',
                     'icon_color' => 'primary',
                 ],
-            /*    [
+                [
                     'text' => 'Medidas',
                     'icon' => 'fas fa-ruler-horizontal',
                     'route'  => 'admin.stocktaking.measures.index',
@@ -334,7 +334,7 @@ return [
                     'icon' => 'fas fa-toolbox',
                     'route'  => 'admin.stocktaking.products.index',
                     'icon_color' => 'danger',
-                ],*/
+                ],
             ], 
         ],
     ],
