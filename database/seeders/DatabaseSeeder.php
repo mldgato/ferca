@@ -35,8 +35,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RackSeeder::class);
         \App\Models\Measure::factory(7)->create();
         \App\Models\Product::factory(100)->create();
-        \App\Models\Buy::factory(2)->create();
-        \App\Models\Buydetail::factory(20)->create();
+        /* \App\Models\Buy::factory(2)->create();
+        \App\Models\Buydetail::factory(20)->create(); */
 
         
     }

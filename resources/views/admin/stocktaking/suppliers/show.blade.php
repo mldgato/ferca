@@ -75,39 +75,7 @@
             <span class="text-primary"><i class="fas fa-toolbox"></i> Productos</span>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-sm table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Cod.</th>
-                            <th>Producto</th>
-                            <th>Marca</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($products as $product)
-                            <tr class="{{ $product->claseFila }}">
-                                <td>{{ $product->cod }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->brand }}</td>
-                                <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->price }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Cod.</th>
-                            <th>Producto</th>
-                            <th>Marca</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+            @livewire('admin.stocktaking.suppliers.show-producs', ['supplier' => $supplier])
         </div>
     </div>
 @stop
@@ -120,7 +88,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

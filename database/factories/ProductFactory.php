@@ -38,6 +38,7 @@ class ProductFactory extends Factory
             'quantity' => $this->faker->numberBetween(0, 25),
             'cost' => $cost,
             'price' => $price,
+            'status' => '1',
             'supplier_id' => Supplier::all()->random()->id,
             'measure_id' => Measure::all()->random()->id,
             'warehouse_id' => $warehouse,

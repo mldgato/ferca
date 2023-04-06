@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->double('cost');
             $table->double('price');
+            $table->enum('status', [0, 1, 2])->default(1);
             $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('measure_id');
             $table->unsignedBigInteger('warehouse_id');
