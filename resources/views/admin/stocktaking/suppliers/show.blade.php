@@ -92,5 +92,16 @@
 @stop
 
 @section('js')
-
+    @if (session('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Producto Agregado',
+                text: {{ session('success') }},
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
 @stop

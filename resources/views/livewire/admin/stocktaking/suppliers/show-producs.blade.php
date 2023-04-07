@@ -1,11 +1,11 @@
 <div wire:init="loadProducts">
-    
+
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-end">
-                        
+
                     </div>
                 </div>
             </div>
@@ -128,13 +128,12 @@
                                     <td class="align-middle">{{ $product->name }}</td>
                                     <td class="align-middle">{{ $product->brand }}</td>
                                     <td class="align-middle">{{ $product->quantity }}</td>
-                                    <td class="align-middle">{{ $product->cost }}</td>
-                                    <td class="align-middle">{{ $product->price }}</td>
+                                    <td class="align-middle">{{ $product->presentCost() }}</td>
+                                    <td class="align-middle">{{ $product->presentPrice() }}</td>
 
                                     <td class="align-middle text-right">
-                                        <button {{-- wire:click="edit({{ $product->id }})" --}} data-toggle="modal"
-                                            data-target=".UpdateWarehouse" class="btn btn-primary btn-sm mr-2"><i
-                                                class="fas fa-edit fa-fw"></i></button>
+                                        <a href="{{ route('admin.stocktaking.buys.add_buy', $product->id) }}" class="btn btn-primary btn-sm mr-2"
+                                            title="Agregar a la compra"><i class="fas fa-cart-plus"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -167,20 +166,6 @@
         @endif
     </div>
     @section('js')
-        <script type="text/javascript">
-            Livewire.on('closeModalMessaje', (title, message, type, mymodal) => {
-                if (mymodal != 'null') {
-                    $('#' + mymodal).modal('hide');
-                }
-                Swal.fire({
-                    position: 'top-end',
-                    icon: type,
-                    title: title,
-                    text: message,
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-            });
-        </script>
+        <script type="text/javascript"></script>
     @stop
 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class BuyController extends Controller
@@ -12,15 +14,15 @@ class BuyController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.stocktaking.buys.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Supplier $supplier)
     {
-        //
+        /* return view('admin.stocktaking.buys.create', compact('supplier')); */
     }
 
     /**
@@ -61,5 +63,31 @@ class BuyController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function add_buy($id)
+    {
+        $product = Product::findOrFail($id);
+          
+        $cart = session()->get('cart', []);
+  
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "cost" => $product->cost,
+                "image" => $product->image
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'El producto se ha agregado a la compra, puede seguir agregando más productos o guardar la compra.');
+    }
+
+    public function cart()
+    {
+        return view('admin.stocktaking.buys.cart');
     }
 }

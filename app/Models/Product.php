@@ -36,4 +36,15 @@ class Product extends Model
     {
         return $this->hasMany(Buydetail::class);
     }
+
+    //Formato de moneda
+    public function presentPrice()
+    {
+        return 'Q. '.number_format($this->price, 2, '.', ',');
+    }
+
+    public function presentCost()
+    {
+        return 'Q. '.number_format($this->cost, 2, '.', ',');
+    }
 }

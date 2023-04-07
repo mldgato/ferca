@@ -128,8 +128,8 @@
                                     <td class="align-middle">{{ $product->name }}</td>
                                     <td class="align-middle">{{ $product->brand }}</td>
                                     <td class="align-middle">{{ $product->quantity }}</td>
-                                    <td class="align-middle">{{ $product->cost }}</td>
-                                    <td class="align-middle">{{ $product->price }}</td>
+                                    <td class="align-middle">{{ $product->presentCost() }}</td>
+                                    <td class="align-middle">{{ $product->presentPrice() }}</td>
 
                                     <td class="align-middle text-right">
                                         <button wire:click="edit({{ $product->id }})" data-toggle="modal"

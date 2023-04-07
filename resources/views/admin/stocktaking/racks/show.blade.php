@@ -39,7 +39,7 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->brand }}</td>
                                 <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->presentPrice() }}</td>
                             </tr>
                         @endforeach
                     </tbody>
