@@ -40,11 +40,17 @@ class Product extends Model
     //Formato de moneda
     public function presentPrice()
     {
-        return 'Q. '.number_format($this->price, 2, '.', ',');
+        return 'Q. ' . number_format($this->price, 2, '.', ',');
     }
 
     public function presentCost()
     {
-        return 'Q. '.number_format($this->cost, 2, '.', ',');
+        return 'Q. ' . number_format($this->cost, 2, '.', ',');
+    }
+
+    public function subtotal($precio, $cantidad)
+    {
+        $subtotal = $precio * $cantidad;
+        return 'Q. ' . number_format($subtotal, 2, '.', ',');
     }
 }

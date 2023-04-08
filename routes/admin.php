@@ -18,6 +18,6 @@ Route::resource('racks', RackController::class)->names('admin.stocktaking.racks'
 Route::resource('products', ProducController::class)->names('admin.stocktaking.products');
 
 
-Route::get('buys/cart', [BuyController::class, 'cart'])->name('admin.stocktaking.buys.cart');
-Route::get('buys/add_buy/{id}', [BuyController::class, 'add_buy'])->name('admin.stocktaking.buys.add_buy');
+Route::get('buys/cart/{supplier}', [BuyController::class, 'cart'])->name('admin.stocktaking.buys.cart');
+Route::get('buys/add_buy/{product}', [BuyController::class, 'add_buy'])->name('admin.stocktaking.buys.add_buy');
 Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys'); 

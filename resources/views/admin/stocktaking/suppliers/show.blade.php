@@ -15,6 +15,7 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-header">
             <span class="text-primary"><i class="fas fa-info"></i> Información</span>
@@ -70,9 +71,30 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+        <div class="row">
+            <div class="col">
+                <div id="AlertaExito" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>¡Producto agregado!</strong> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">
-            <span class="text-primary"><i class="fas fa-toolbox"></i> Productos</span>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <span class="text-primary"><i class="fas fa-toolbox"></i> Productos</span>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="d-flex justify-content-end">
+                        <a href="{{route('admin.stocktaking.buys.cart', $supplier->id)}}" class="btn btn-outline-primary btn-lg ml-2">Compra <i class="fas fa-shopping-basket"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             @livewire('admin.stocktaking.suppliers.show-producs', ['supplier' => $supplier])
@@ -92,16 +114,12 @@
 @stop
 
 @section('js')
-    @if (session('success'))
-        <script type="text/javascript">
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Producto Agregado',
-                text: {{ session('success') }},
-                showConfirmButton: false,
-                timer: 3000
-            });
-        </script>
-    @endif
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var myAlert = document.querySelector('#AlertaExito');
+            setTimeout(function() {
+                myAlert.classList.remove('show');
+            }, 3000);
+        });
+    </script>
 @stop

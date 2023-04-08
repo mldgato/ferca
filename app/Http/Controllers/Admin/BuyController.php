@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BuyController extends Controller
 {
@@ -65,20 +66,26 @@ class BuyController extends Controller
         //
     }
 
-    public function add_buy($id)
+    public function add_buy(Product $product)
     {
-        $product = Product::findOrFail($id);
-          
+        if($product->image)
+        {
+            $image = $product->image->url;
+        }
+        else
+        {
+            $image = 'No_image';
+        }  
         $cart = session()->get('cart', []);
   
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+        if(isset($cart[$product->id])) {
+            $cart[$product->id]['quantity']++;
         } else {
-            $cart[$id] = [
+            $cart[$product->id] = [
                 "name" => $product->name,
                 "quantity" => 1,
-                "cost" => $product->cost,
-                "image" => $product->image
+                "cost" => $product->presentCost(),
+                "image" => $image
             ];
         }
 
@@ -86,8 +93,8 @@ class BuyController extends Controller
         return redirect()->back()->with('success', 'El producto se ha agregado a la compra, puede seguir agregando más productos o guardar la compra.');
     }
 
-    public function cart()
+    public function cart(Supplier $supplier)
     {
-        return view('admin.stocktaking.buys.cart');
+        return view('admin.stocktaking.buys.cart', compact('supplier'));
     }
 }
