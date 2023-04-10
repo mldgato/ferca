@@ -84,12 +84,6 @@ class ShowProducts extends Component
         $warehouses = Warehouse::orderBy('name', 'asc')->get();
         $racks = Rack::where('warehouse_id', $this->warehouse_id)->orderBy('name', 'asc')->get();
         if ($this->readyToLoad) {
-            /* $products = Product::where('cod', 'LIKE', '%' . $this->search . '%')
-                ->where('status', '=', '1')
-                ->orWhere('name', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('brand', 'LIKE', '%' . $this->search . '%')
-                ->orderBy($this->sort, $this->direction)
-                ->paginate($this->cant); */
             $search = $this->search;
             $products = Product::where(function ($query) use ($search) {
                 $query->where('cod', 'LIKE', '%' . $search . '%')

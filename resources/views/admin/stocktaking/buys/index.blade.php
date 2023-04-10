@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    
+    @livewire('admin.stocktaking.buys.show-buys')
 @stop
 
 @section('css')

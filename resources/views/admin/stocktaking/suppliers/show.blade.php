@@ -83,23 +83,7 @@
             </div>
         </div>
     @endif
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <span class="text-primary"><i class="fas fa-toolbox"></i> Productos</span>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="d-flex justify-content-end">
-                        <a href="{{route('admin.stocktaking.buys.cart', $supplier->id)}}" class="btn btn-outline-primary btn-lg ml-2">Compra <i class="fas fa-shopping-basket"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            @livewire('admin.stocktaking.suppliers.show-producs', ['supplier' => $supplier])
-        </div>
-    </div>
+    @livewire('admin.stocktaking.suppliers.show-producs', ['supplier' => $supplier])
 @stop
 
 @section('footer')

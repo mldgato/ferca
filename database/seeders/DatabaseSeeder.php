@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Supplier::factory(10)->create();
-        \App\Models\Warehouse::factory(2)->create();
-        \App\Models\Rack::factory(20)->create();
+        /* \App\Models\Warehouse::factory(2)->create(); */
+        $this->call(WarehouseSeeder::class);
         $this->call(RackSeeder::class);
         \App\Models\Measure::factory(7)->create();
         \App\Models\Product::factory(100)->create();

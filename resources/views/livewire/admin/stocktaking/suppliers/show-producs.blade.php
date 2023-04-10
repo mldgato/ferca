@@ -1,11 +1,17 @@
-<div wire:init="loadProducts">
+<div wire:init="loadProducts" wire:on="productAdded">
 
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12 col-md-6">
+                    <span class="text-primary"><i class="fas fa-toolbox"></i> Productos</span>
+                </div>
+                <div class="col-sm-12 col-md-6">
                     <div class="d-flex justify-content-end">
-
+                        @livewire('admin.stocktaking.suppliers.create-product', ['supplier' => $supplier->id])
+                        <a href="{{ route('admin.stocktaking.buys.cart', $supplier->id) }}"
+                            class="btn btn-outline-danger btn-lg ml-2">Compra <i
+                                class="fas fa-shopping-basket"></i></a>
                     </div>
                 </div>
             </div>
@@ -132,8 +138,9 @@
                                     <td class="align-middle">{{ $product->presentPrice() }}</td>
 
                                     <td class="align-middle text-right">
-                                        <a href="{{ route('admin.stocktaking.buys.add_buy', $product->id) }}" class="btn btn-primary btn-sm mr-2"
-                                            title="Agregar a la compra"><i class="fas fa-cart-plus"></i></a>
+                                        <a href="{{ route('admin.stocktaking.buys.add_buy', $product->id) }}"
+                                            class="btn btn-primary btn-sm mr-2" title="Agregar a la compra"><i
+                                                class="fas fa-cart-plus"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -166,6 +173,20 @@
         @endif
     </div>
     @section('js')
-        <script type="text/javascript"></script>
+        <script type="text/javascript">
+            Livewire.on('closeModalMessaje', (title, message, type, mymodal) => {
+                if (mymodal != 'null') {
+                    $('#' + mymodal).modal('hide');
+                }
+                Swal.fire({
+                    position: 'top-end',
+                    icon: type,
+                    title: title,
+                    text: message,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            });
+        </script>
     @stop
 </div>

@@ -335,6 +335,11 @@ return [
                     'route'  => 'admin.stocktaking.products.index',
                     'icon_color' => 'danger',
                 ],
+                [
+                    'text' => 'Compras',
+                    'icon' => 'fas fa-shopping-basket',
+                    'route'  => 'admin.stocktaking.buys.index',
+                ],
             ], 
         ],
     ],

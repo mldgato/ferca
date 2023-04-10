@@ -20,4 +20,7 @@ Route::resource('products', ProducController::class)->names('admin.stocktaking.p
 
 Route::get('buys/cart/{supplier}', [BuyController::class, 'cart'])->name('admin.stocktaking.buys.cart');
 Route::get('buys/add_buy/{product}', [BuyController::class, 'add_buy'])->name('admin.stocktaking.buys.add_buy');
+Route::patch('buys/update_quantity', [BuyController::class, 'update_quantity'])->name('admin.stocktaking.buys.update_quantity');
+Route::patch('buys/update_cost', [BuyController::class, 'update_cost'])->name('admin.stocktaking.buys.update_cost');
+Route::delete('buys/remove_from_cart', [BuyController::class, 'remove_from_cart'])->name('admin.stocktaking.buys.remove_from_cart');
 Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys'); 

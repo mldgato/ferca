@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Stocktaking\Products;
+namespace App\Http\Livewire\Admin\Stocktaking\Suppliers;
 
 use Livewire\Component;
 use App\Models\Supplier;
@@ -14,8 +14,10 @@ use Livewire\WithFileUploads;
 class CreateProduct extends Component
 {
     use WithFileUploads;
-    public $cod, $name, $brand, $quantity, $cost, $price, $supplier_id, $measure_id, $warehouse_id, $rack_id, $image, $identificador, $muestra;
-
+    public $supplier;
+    public $cod, $name, $brand, $cost, $price, $supplier_id, $measure_id, $warehouse_id, $rack_id, $image, $identificador, $muestra;
+    public $status = '0';
+    public $quantity = 0;
     public function mount()
     {
         $this->identificador = rand();
@@ -26,10 +28,9 @@ class CreateProduct extends Component
         'cod' => 'required|unique:products',
         'name' => 'required',
         'brand' => 'required',
-        'quantity' => 'required|numeric|min:1',
+        'quantity' => 'required|numeric|min:0',
         'cost' => 'required|numeric|min:1',
         'price' => 'required|numeric|min:1',
-        'supplier_id' => 'required|numeric',
         'measure_id' => 'required|numeric',
         'warehouse_id' => 'required|numeric',
         'rack_id' => 'required|numeric',
@@ -53,7 +54,8 @@ class CreateProduct extends Component
                 'quantity' => $this->quantity,
                 'cost' => $this->cost,
                 'price' => $this->price,
-                'supplier_id' => $this->supplier_id,
+                'status' => $this->status,
+                'supplier_id' => $this->supplier,
                 'measure_id' => $this->measure_id,
                 'warehouse_id' => $this->warehouse_id,
                 'rack_id' => $this->rack_id,
@@ -70,17 +72,18 @@ class CreateProduct extends Component
         $this->image = '';
         $this->resetFields();
         $this->identificador = rand();
-        $this->emitTo('admin.stocktaking.products.show-products', 'render');
+        $this->emitTo('admin.stocktaking.suppliers.show-producs', 'render');
         $this->emit('closeModalMessaje', 'Información guardada', 'Producto almacenado exitosamente.', 'success', 'CreateNewSupplier');
     }
 
     public function render()
     {
-        $suppliers = Supplier::orderBy('company', 'asc')->get();
+        $Thesupplier = Supplier::findOrFail($this->supplier);
+
         $measures = Measure::orderBy('unit', 'asc')->get();
         $warehouses = Warehouse::orderBy('name', 'asc')->get();
         $racks = Rack::where('warehouse_id', $this->warehouse_id)->orderBy('name', 'asc')->get();
-        return view('livewire.admin.stocktaking.products.create-product', compact('suppliers', 'measures', 'warehouses', 'racks'));
+        return view('livewire.admin.stocktaking.suppliers.create-product', compact('Thesupplier', 'measures', 'warehouses', 'racks'));
     }
 
     public function resetFields()

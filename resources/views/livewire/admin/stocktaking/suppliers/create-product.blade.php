@@ -16,12 +16,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-warning" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i> El siguiente productos se actualizará independiente de
-                        una compra.
-                    </div>
                     <form>
                         @csrf
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <p><strong>¡Información importante!</strong> El siguiente producto se agregará a la
+                                        base de datos, pero no será visible hasta que lo seleccione por primera vez en
+                                        una compra, solo podrá verse como un producto de este proveedor.</p>
+                                    <ul>
+                                        <li>La cantidad se estipula en cero y cambiará al momento de hacer la compra.
+                                        </li>
+                                        <li>No se puede cambiar de proveedor, este producto pertenece al proveedor:
+                                            {{ $Thesupplier->company }}.</li>
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3">
                                 <div class="form-group">
@@ -77,8 +91,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-th"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" id="quantity"
-                                            placeholder="Escriba la cantidad del producto" wire:model="quantity" min="1">
+                                        <div class="form-control">0</div>
                                     </div>
                                     @error('quantity')
                                         <span class="text-danger error">{{ $message }}</span>
@@ -95,7 +108,8 @@
                                             <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                         </div>
                                         <input type="number" class="form-control" id="cost"
-                                            placeholder="Escriba el precio de compra" wire:model="cost" min="1">
+                                            placeholder="Escriba el precio de compra" wire:model="cost"
+                                            min="1">
                                     </div>
                                     @error('cost')
                                         <span class="text-danger error">{{ $message }}</span>
@@ -111,7 +125,8 @@
                                                     class="fas fa-hand-holding-usd"></i></span>
                                         </div>
                                         <input type="number" class="form-control" id="price"
-                                            placeholder="Escriba el precio de venta" wire:model="price" min="1">
+                                            placeholder="Escriba el precio de venta" wire:model="price"
+                                            min="1">
                                     </div>
                                     @error('price')
                                         <span class="text-danger error">{{ $message }}</span>
@@ -127,13 +142,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-people-carry"></i></span>
                                         </div>
-                                        <select name="supplier_id" id="supplier_id" class="form-control"
-                                            wire:model="supplier_id">
-                                            <option value="">- Seleccione -</option>
-                                            @foreach ($suppliers as $supplier)
-                                                <option value="{{ $supplier->id }}">{{ $supplier->company }}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="form-control">
+                                            {{ $Thesupplier->company }}
+                                        </div>
                                     </div>
                                     @error('supplier_id')
                                         <span class="text-danger error">{{ $message }}</span>

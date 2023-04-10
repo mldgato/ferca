@@ -15,11 +15,14 @@ class ShowProducs extends Component
     public $direction = 'asc';
     public $cant = '10';
     public $readyToLoad = false;
+    public $prueba = "";
 
     protected $paginationTheme = "bootstrap";
     protected $queryString = [
         'cant' => ['except' => '10']
     ];
+
+    protected $listeners = ['render'];
 
     public function updatingSearch()
     {
@@ -47,8 +50,7 @@ class ShowProducs extends Component
                 $query->where('cod', 'LIKE', '%' . $search . '%')
                     ->orWhere('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('brand', 'LIKE', '%' . $search . '%');
-            })->where('status', '=', '1')
-                ->where('supplier_id', '=', $supplier->id)
+            })->where('supplier_id', '=', $supplier->id)
                 ->orderBy($this->sort, $this->direction)
                 ->paginate($this->cant);
 
