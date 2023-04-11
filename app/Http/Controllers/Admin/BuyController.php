@@ -66,6 +66,7 @@ class BuyController extends Controller
             $product = Product::findOrFail($product_ids[$i]);
             $product->quantity = $cantidadNueva;
             $product->cost = $costs[$i];
+            $product->status = '1';
             $product->save();
         }
 
@@ -77,9 +78,11 @@ class BuyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Buy $buy)
     {
-        //
+        $supplier = Supplier::where('id', $buy->supplier_id)->first();
+        $buydetails = Buydetail::where('buy_id' , $buy->id)->get();
+        return view('admin.stocktaking.buys.show', compact('buy', 'supplier', 'buydetails'));
     }
 
     /**
@@ -168,3 +171,4 @@ class BuyController extends Controller
         }
     }
 }
+

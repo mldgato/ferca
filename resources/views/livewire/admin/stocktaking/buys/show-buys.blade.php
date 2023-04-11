@@ -2,9 +2,9 @@
 
     <div class="card mb-3">
         <div class="card-header">
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-sm-12 col-md-6">
-                    <span class="text-primary"><i class="fas fa-shopping-basket"></i> Compras</span>
+                    <span class="text-primary"><i class="fas fa-shopping-basket"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-6">
                 </div>
@@ -102,8 +102,7 @@
 
                                     <td class="align-middle text-right">
                                         <a href="{{ route('admin.stocktaking.buys.show', $buy->id) }}"
-                                            class="btn btn-primary btn-sm mr-2" title="Agregar a la compra"><i
-                                                class="fas fa-cart-plus"></i></a>
+                                            class="btn btn-primary btn-sm mr-2" title="Agregar a la compra"><i class="fas fa-file-invoice-dollar"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
