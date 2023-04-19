@@ -8,6 +8,8 @@ use App\Http\Controllers\admin\WarehouseController;
 use App\Http\Controllers\admin\RackController;
 use App\Http\Controllers\admin\ProducController;
 use App\Http\Controllers\admin\BuyController;
+use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\admin\SalesController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.index');
 
@@ -24,3 +26,8 @@ Route::patch('buys/update_quantity', [BuyController::class, 'update_quantity'])-
 Route::patch('buys/update_cost', [BuyController::class, 'update_cost'])->name('admin.stocktaking.buys.update_cost');
 Route::delete('buys/remove_from_cart', [BuyController::class, 'remove_from_cart'])->name('admin.stocktaking.buys.remove_from_cart');
 Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys'); 
+
+Route::resource('customers', CustomerController::class)->names('admin.shop.customers');
+
+Route::get('sales/add_sale/{product}', [SalesController::class, 'add_sale'])->name('admin.shop.sales.add_sale');
+Route::resource('sales', SalesController::class)->names('admin.shop.sales');

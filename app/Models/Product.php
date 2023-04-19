@@ -37,6 +37,11 @@ class Product extends Model
         return $this->hasMany(Buydetail::class);
     }
 
+    public function saledetails()
+    {
+        return $this->hasMany(Saledetail::class);
+    }
+
     //Formato de moneda
     public function presentPrice()
     {

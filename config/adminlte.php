@@ -291,7 +291,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        
+
 
         // Sidebar items:
         ['header' => 'Configuración de usuario'],
@@ -304,7 +304,7 @@ return [
         [
             'text'    => 'Administración',
             'icon'    => 'fas fa-fw fa-toolbox',
-             'submenu' => [
+            'submenu' => [
                 [
                     'text' => 'Proveedores',
                     'icon' => 'fas fa-people-carry',
@@ -340,7 +340,19 @@ return [
                     'icon' => 'fas fa-shopping-basket',
                     'route'  => 'admin.stocktaking.buys.index',
                 ],
-            ], 
+            ],
+        ],
+        ['header' => 'Clientes'],
+        [
+            'text'    => 'Lista de clientes',
+            'icon'    => 'fas fa-fw fa-user-tag',
+            'route'  => 'admin.shop.customers.index',
+        ],
+        ['header' => 'Tienda'],
+        [
+            'text'    => 'Venta de productos',
+            'icon'    => 'fas fa-fw fa-store',
+            'route'  => 'admin.shop.sales.index',
         ],
     ],
 
