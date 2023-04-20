@@ -71,7 +71,7 @@
                                         <td>{{ $details['cod'] }}</td>
                                         <td>{{ $details['name'] }}</td>
                                         <td>
-                                            {{ number_format($details['price'], 2, '.', ',') }}
+                                            Q. {{ number_format($details['price'], 2, '.', ',') }}
                                             <input type="hidden" value="{{ $details['price'] }}" name="price[]">
                                         </td>
                                         <td><input type="number" value="{{ $details['quantity'] }}"
@@ -115,5 +115,54 @@
 @stop
 
 @section('js')
+    <script type="text/javascript">
+        $(".update-quantity").change(function(e) {
+            e.preventDefault();
 
+            var ele = $(this);
+
+            $.ajax({
+                url: '{{ route('admin.shop.sales.update_quantity') }}',
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents("tr").attr("data-id"),
+                    quantity: ele.parents("tr").find(".quantity").val()
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        $(".remove-from-cart").click(function(e) {
+            e.preventDefault();
+
+            var ele = $(this);
+
+            Swal.fire({
+                title: 'Quitar producto',
+                html: "<p><strong>¿Está seguro que quiere quitar este producto de la venta?</strong></p><p>El producto se quitará pero, podrá agregarlo nuevamente.</p>",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, quitar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('admin.shop.sales.remove_from_cart') }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            id: ele.parents("tr").attr("data-id")
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @stop

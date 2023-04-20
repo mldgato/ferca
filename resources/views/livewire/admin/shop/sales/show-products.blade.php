@@ -1,5 +1,4 @@
 <div wire:init="loadProducts">
-    @include('livewire.admin.stocktaking.products.update-product')
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
