@@ -189,9 +189,21 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="d-flex justify-content-end">
-                    <button type="submit" id="btnsubmit" class="btn btn-success btn-lg">Guardar <i
-                            class="fas fa-shopping-cart"></i></button>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        @if (session('cart'))
+                            <button type="button" class="btn btn-danger btn-lg cancel-venta">Cancelar venta <i
+                                    class="fas fa-window-close"></i></button>
+                        @endif
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="d-flex justify-content-end">
+                            @if (session('cart'))
+                                <button type="submit" id="btnsubmit" class="btn btn-success btn-lg">Guardar <i
+                                        class="fas fa-shopping-cart"></i></button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -298,5 +310,44 @@
                 }
             });
         });
+
+        $(".cancel-venta").click(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Cancelar la compra',
+                html: "<p><strong>¿Está seguro que quiere cancelar la compra?</strong></p><p>No podrá continuar y se eliminarán todos los productos seleccionados.</p>",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, cancelar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('admin.stocktaking.buys.cancel_buy') }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+
+        });
     </script>
+    @if (session('deletesale'))
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Compra eliminada',
+            text: "{{ session('deletesale') }}",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
+@endif
 @stop

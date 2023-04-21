@@ -25,6 +25,7 @@ Route::get('buys/add_buy/{product}', [BuyController::class, 'add_buy'])->name('a
 Route::patch('buys/update_quantity', [BuyController::class, 'update_quantity'])->name('admin.stocktaking.buys.update_quantity');
 Route::patch('buys/update_cost', [BuyController::class, 'update_cost'])->name('admin.stocktaking.buys.update_cost');
 Route::delete('buys/remove_from_cart', [BuyController::class, 'remove_from_cart'])->name('admin.stocktaking.buys.remove_from_cart');
+Route::delete('buys/cancel_buy', [BuyController::class, 'cancel_buy'])->name('admin.stocktaking.buys.cancel_buy');
 Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys'); 
 
 Route::resource('customers', CustomerController::class)->names('admin.shop.customers');
@@ -32,4 +33,5 @@ Route::resource('customers', CustomerController::class)->names('admin.shop.custo
 Route::get('sales/add_sale/{product}', [SalesController::class, 'add_sale'])->name('admin.shop.sales.add_sale');
 Route::patch('sales/update_quantity', [SalesController::class, 'update_quantity'])->name('admin.shop.sales.update_quantity');
 Route::delete('sales/remove_from_cart', [SalesController::class, 'remove_from_cart'])->name('admin.shop.sales.remove_from_cart');
+Route::delete('sales/cancel_sale', [SalesController::class, 'cancel_sale'])->name('admin.shop.sales.cancel_sale');
 Route::resource('sales', SalesController::class)->names('admin.shop.sales');

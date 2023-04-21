@@ -170,5 +170,11 @@ class BuyController extends Controller
             session()->flash('success', 'Producto eliminado satisfactoriamente');
         }
     }
+
+    public function cancel_buy()
+    {
+        session()->forget('cart');
+        session()->flash('deletesale', 'La compra se ha eliminado exitosamente');
+    }
 }
 

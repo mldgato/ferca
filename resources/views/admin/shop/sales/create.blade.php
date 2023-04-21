@@ -9,17 +9,19 @@
         @csrf
         <div class="card">
             <div class="card-header">
-                <span class="text-primary"><i class="fas fa-info"></i> Información</span>
+                <span class="text-primary"><i class="fas fa-info"></i> Información del cliente</span>
             </div>
             <div class="card-body">
-
+                @if (session('cart_sale'))
+                    @livewire('admin.shop.sales.customer-data')
+                @endif
             </div>
         </div>
-        @if (session('success'))
+        @if (session('message'))
             <div class="row">
                 <div class="col">
-                    <div id="AlertaExito" class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>¡Proceso registrado!</strong> {{ session('success') }}
+                    <div id="AlertaExito" class="alert {{ session('class') }} alert-dismissible fade show" role="alert">
+                        <strong>{{ session('title') }}</strong> {{ session('message') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,7 +78,8 @@
                                         </td>
                                         <td><input type="number" value="{{ $details['quantity'] }}"
                                                 class="form-control quantity update-quantity" min="1"
-                                                name="quantity[]" id="quantity_{{ $id }}" required />
+                                                max="{{ $details['nowquantity'] }}" name="quantity[]"
+                                                id="quantity_{{ $id }}" required />
                                         </td>
                                         <td>Q.
                                             {{ number_format(floatval($details['price']) * $details['quantity'], 2, '.', ',') }}
@@ -91,20 +94,34 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7" class="text-right">
+                                <td colspan="6" class="text-right">
                                     <h3><strong>Total Q. {{ number_format($total, 2, '.', ',') }}</strong></h3>
                                     <input type="hidden" name="total" id="total" value="{{ $total }}">
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
             <div class="card-footer">
-                <div class="d-flex justify-content-end">
-                    <button type="submit" id="btnsubmit" class="btn btn-success btn-lg">Guardar <i
-                            class="fas fa-shopping-cart"></i></button>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        @if (session('cart_sale'))
+                            <button type="button" class="btn btn-danger btn-lg cancel-venta">Cancelar venta <i
+                                    class="fas fa-window-close"></i></button>
+                        @endif
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="d-flex justify-content-end">
+                            @if (session('cart_sale'))
+                                <button type="submit" id="btnsubmit" class="btn btn-success btn-lg">Guardar <i
+                                        class="fas fa-shopping-cart"></i></button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </form>
@@ -164,5 +181,44 @@
                 }
             });
         });
+
+        $(".cancel-venta").click(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Cancelar la venta',
+                html: "<p><strong>¿Está seguro que quiere cancelar la venta?</strong></p><p>No podrá continuar y se eliminarán todos los productos seleccionados.</p>",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, cancelar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('admin.shop.sales.cancel_sale') }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+
+        });
     </script>
+    @if (session('deletesale'))
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Venta eliminada',
+                text: "{{ session('deletesale') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
 @stop

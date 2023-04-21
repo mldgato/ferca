@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Livewire\Admin\Shop\Sales;
+
+use Livewire\Component;
+use App\Models\Customer;
+
+class CustomerData extends Component
+{
+    public $customer_id;
+    public $nit;
+    public $name;
+    public $address;
+    public $email;
+    public $phone;
+
+    public function buscarCliente()
+    {
+        $cliente = Customer::where('nit', $this->nit)->first();
+
+        if ($cliente) {
+            $this->customer_id = $cliente->id;
+            $this->nit = $cliente->nit;
+            $this->name = $cliente->name;
+            $this->address = $cliente->address;
+            $this->email = $cliente->email;
+            $this->phone = $cliente->phone;
+
+            session()->put('customer_nit', $this->nit);
+            session()->put('customer_name', $this->name);
+            session()->put('customer_address', $this->address);
+            session()->put('customer_email', $this->email);
+            session()->put('customer_phone', $this->phone);
+        }
+    }
+
+    protected $queryString = [
+        'nit' => ['except' => '']
+    ];
+
+    public function mount()
+    {
+        $this->nit = session()->get('customer_nit', '');
+        $this->name = session()->get('customer_name', '');
+        $this->address = session()->get('customer_address', '');
+        $this->email = session()->get('customer_email', '');
+        $this->phone = session()->get('customer_phone', '');
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.shop.sales.customer-data');
+    }
+}

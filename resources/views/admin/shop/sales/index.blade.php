@@ -5,11 +5,11 @@
 @stop
 
 @section('content')
-    @if (session('success'))
+    @if (session('message'))
         <div class="row">
             <div class="col">
-                <div id="AlertaExito" class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>¡Producto agregado!</strong> {{ session('success') }}
+                <div id="AlertaExito" class="alert {{ session('class') }} alert-dismissible fade show" role="alert">
+                    <strong>{{ session('title') }}</strong> {{ session('message') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
