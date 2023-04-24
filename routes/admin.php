@@ -30,6 +30,7 @@ Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys');
 
 Route::resource('customers', CustomerController::class)->names('admin.shop.customers');
 
+Route::get('sales/products', [SalesController::class, 'products'])->name('admin.shop.sales.products');
 Route::get('sales/add_sale/{product}', [SalesController::class, 'add_sale'])->name('admin.shop.sales.add_sale');
 Route::patch('sales/update_quantity', [SalesController::class, 'update_quantity'])->name('admin.shop.sales.update_quantity');
 Route::delete('sales/remove_from_cart', [SalesController::class, 'remove_from_cart'])->name('admin.shop.sales.remove_from_cart');

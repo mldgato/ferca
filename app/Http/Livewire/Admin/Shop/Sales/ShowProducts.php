@@ -25,7 +25,8 @@ class ShowProducts extends Component
 
     protected $paginationTheme = "bootstrap";
     protected $queryString = [
-        'cant' => ['except' => '10']
+        'cant' => ['except' => '10'],
+        'search' => ['except' => ''],
     ];
     protected $listeners = ['render', 'delete'];
 

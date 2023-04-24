@@ -18,9 +18,14 @@ class SaleFactory extends Factory
      */
     public function definition(): array
     {
+        $total = $this->faker->decimal(6,2);
+        $pay = $total + 500;
+        $change = $pay - $total;
         return [
             'invoice' => $this->faker->unique()->numberBetween(51111111, 99999999),
-            'total' => $this->faker->decimal(6,2),
+            'total' => $total,
+            'pay' => $pay,
+            'status' => 1,
             'date' => $this->faker->date(),
             'customer_id' => Customer::all()->random()->id,
             'user_id' => User::all()->random()->id

@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('admin.stocktaking.buys.store') }}" method="POST">
+    <form action="{{ route('admin.shop.sales.store') }}" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('admin.shop.sales.index') }}"
+                            <a href="{{ route('admin.shop.sales.products') }}"
                                 class="btn btn-outline-warning btn-lg ml-2">Seleccionar más productos <i
                                     class="fas fa-backward"></i></a>
                         </div>
@@ -80,6 +80,9 @@
                                                 class="form-control quantity update-quantity" min="1"
                                                 max="{{ $details['nowquantity'] }}" name="quantity[]"
                                                 id="quantity_{{ $id }}" required />
+                                            @error('quantity')
+                                                <span class="text-danger error">{{ $message }}</span>
+                                            @enderror
                                         </td>
                                         <td>Q.
                                             {{ number_format(floatval($details['price']) * $details['quantity'], 2, '.', ',') }}

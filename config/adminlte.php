@@ -352,7 +352,7 @@ return [
         [
             'text'    => 'Venta de productos',
             'icon'    => 'fas fa-fw fa-store',
-            'route'  => 'admin.shop.sales.index',
+            'route'  => 'admin.shop.sales.products',
         ],
     ],
 

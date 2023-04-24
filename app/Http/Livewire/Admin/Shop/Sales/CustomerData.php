@@ -13,6 +13,11 @@ class CustomerData extends Component
     public $address;
     public $email;
     public $phone;
+    public $totalMoney;
+    public $total;
+    public $pay;
+    public $changeMoney;
+    public $change;
 
     public function buscarCliente()
     {
@@ -26,6 +31,7 @@ class CustomerData extends Component
             $this->email = $cliente->email;
             $this->phone = $cliente->phone;
 
+            session()->put('customer_id', $this->customer_id);
             session()->put('customer_nit', $this->nit);
             session()->put('customer_name', $this->name);
             session()->put('customer_address', $this->address);
@@ -40,11 +46,18 @@ class CustomerData extends Component
 
     public function mount()
     {
+        $this->customer_id = session()->get('customer_id', '');
         $this->nit = session()->get('customer_nit', '');
         $this->name = session()->get('customer_name', '');
         $this->address = session()->get('customer_address', '');
         $this->email = session()->get('customer_email', '');
         $this->phone = session()->get('customer_phone', '');
+        $total = 0;
+        foreach (session('cart_sale') as $id => $details) {
+            $total += floatval($details['price']) * $details['quantity'];
+        }
+        $this->totalMoney = number_format($total, 2, '.', ',');
+        $this->total = $total;
     }
 
     public function render()

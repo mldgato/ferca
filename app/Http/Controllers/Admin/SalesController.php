@@ -5,12 +5,19 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Sale;
+use App\Models\Saledetail;
 
 class SalesController extends Controller
 {
     public function index()
     {
         return view('admin.shop.sales.index');
+    }
+    
+    public function products()
+    {
+        return view('admin.shop.sales.products');
     }
 
     public function add_sale(Product $product)
@@ -84,7 +91,55 @@ class SalesController extends Controller
     }
     public function cancel_sale()
     {
+        session()->forget('customer_nit');
+        session()->forget('customer_name');
+        session()->forget('customer_address');
+        session()->forget('customer_email');
+        session()->forget('customer_phone');
         session()->forget('cart_sale');
         session()->flash('deletesale', 'La venta se ha eliminado exitosamente');
+    }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nit' => 'numeric',
+            'total' => 'required|numeric',
+            'pay' => 'required|numeric',
+            'price.*' => 'required|numeric|min:1',
+            'quantity.*' => 'required|numeric|min:1',
+        ]);
+
+        $sale = Sale::create([
+            'invoice' => $request->invoice,
+            'total' => $request->total,
+            'pay' => $request->pay,
+            'date' => date('Y-m-d'),
+            'customer_id' => $request->customer_id,
+            'user_id' => auth()->id()
+        ]);
+
+        $product_ids = $request->input('product_id');
+        $prices = $request->input('price');
+        $quantitys = $request->input('quantity');
+
+        for ($i = 0; $i < count($product_ids); $i++) {
+            Saledetail::create([
+                'sale_id' => $sale->id,
+                'product_id' => $product_ids[$i],
+                'quantity' => $quantitys[$i],
+                'price' => $prices[$i],
+            ]);
+
+            $cantidadActual = Product::where('id', $product_ids[$i])->value('quantity');
+            $cantidadNueva = $cantidadActual - $quantitys[$i];
+
+            $product = Product::findOrFail($product_ids[$i]);
+            $product->quantity = $cantidadNueva;
+            $product->save();
+        }
+
+        session()->forget('cart_sale');
+
+        return view('admin.shop.sales.index');
     }
 }
