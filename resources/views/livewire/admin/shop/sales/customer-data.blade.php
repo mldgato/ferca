@@ -104,8 +104,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fab fa-quora"></i></span>
                     </div>
-                    <input type="number" name="pay" id="pay" class="form-control" wire:model="pay"
-                        required>
+                    <input type="number" name="pay" id="pay" class="form-control" wire:model="pay" required>
                 </div>
             </div>
             @error('pay')

@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\Saledetail;
+use App\Models\Customer;
 
 class SalesController extends Controller
 {
@@ -14,7 +15,7 @@ class SalesController extends Controller
     {
         return view('admin.shop.sales.index');
     }
-    
+
     public function products()
     {
         return view('admin.shop.sales.products');
@@ -118,6 +119,17 @@ class SalesController extends Controller
             'user_id' => auth()->id()
         ]);
 
+        $customer = Customer::find($request->customer_id);
+        if ($customer === null) {
+            $newCustomer = new Customer();
+            $newCustomer->name = $request->name;
+            $newCustomer->email = $request->email;
+            $newCustomer->nit = $request->nit;
+            $newCustomer->address = $request->address;
+            $newCustomer->phone = $request->phone;
+            $newCustomer->save();
+        }
+
         $product_ids = $request->input('product_id');
         $prices = $request->input('price');
         $quantitys = $request->input('quantity');
@@ -140,6 +152,11 @@ class SalesController extends Controller
 
         session()->forget('cart_sale');
 
-        return view('admin.shop.sales.index');
+        return view('admin.shop.sales.show', compact('sale'));
+    }
+
+    public function show(Sale $sale)
+    {
+        return view('admin.shop.sales.show', compact('sale'));
     }
 }
