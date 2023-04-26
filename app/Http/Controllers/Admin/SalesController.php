@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\Saledetail;
 use App\Models\Customer;
+use Dompdf\Dompdf;
 
 class SalesController extends Controller
 {
@@ -177,5 +178,14 @@ class SalesController extends Controller
     public function show(Sale $sale)
     {
         return view('admin.shop.sales.show', compact('sale'));
+    }
+
+    public function pdf($id)
+    {
+        $sale = Sale::with('saledetails.product')->find($id);
+
+        $pdf = new Dompdf();
+        $pdf->loadView('sales.pdf', compact('sale'));
+        return $pdf->stream();
     }
 }
