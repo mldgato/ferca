@@ -92,6 +92,7 @@ class SalesController extends Controller
     }
     public function cancel_sale()
     {
+        session()->forget('customer_id');
         session()->forget('customer_nit');
         session()->forget('customer_name');
         session()->forget('customer_address');
@@ -110,14 +111,6 @@ class SalesController extends Controller
             'quantity.*' => 'required|numeric|min:1',
         ]);
 
-        $sale = Sale::create([
-            'invoice' => $request->invoice,
-            'total' => $request->total,
-            'pay' => $request->pay,
-            'date' => date('Y-m-d'),
-            'customer_id' => $request->customer_id,
-            'user_id' => auth()->id()
-        ]);
 
         $customer = Customer::find($request->customer_id);
         if ($customer === null) {
@@ -128,7 +121,27 @@ class SalesController extends Controller
             $newCustomer->address = $request->address;
             $newCustomer->phone = $request->phone;
             $newCustomer->save();
+
+            $sale = Sale::create([
+                'invoice' => $request->invoice,
+                'total' => $request->total,
+                'pay' => $request->pay,
+                'date' => date('Y-m-d'),
+                'customer_id' => $newCustomer->id,
+                'user_id' => auth()->id()
+            ]);
+        } else {
+            $sale = Sale::create([
+                'invoice' => $request->invoice,
+                'total' => $request->total,
+                'pay' => $request->pay,
+                'date' => date('Y-m-d'),
+                'customer_id' => $request->customer_id,
+                'user_id' => auth()->id()
+            ]);
         }
+
+
 
         $product_ids = $request->input('product_id');
         $prices = $request->input('price');
@@ -151,8 +164,14 @@ class SalesController extends Controller
         }
 
         session()->forget('cart_sale');
-
-        return view('admin.shop.sales.show', compact('sale'));
+        session()->forget('customer_id');
+        session()->forget('customer_nit');
+        session()->forget('customer_name');
+        session()->forget('customer_address');
+        session()->forget('customer_email');
+        session()->forget('customer_phone');
+        $sale = Sale::find($sale->id);
+        return redirect()->route('admin.shop.sales.show', compact('sale'));
     }
 
     public function show(Sale $sale)
