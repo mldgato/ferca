@@ -65,17 +65,8 @@
                                         <i class="fas fa-sort ml-4"></i>
                                     @endif
                                 </th>
-                                <th style="cursor: pointer" wire:click="order('date')">
+                                <th>
                                     Fecha
-                                    @if ($sort == 'date')
-                                        @if ($direction == 'asc')
-                                            <i class="fas fa-sort-up ml-4"></i>
-                                        @else
-                                            <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
-                                        <i class="fas fa-sort ml-4"></i>
-                                    @endif
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('total')">
                                     Total

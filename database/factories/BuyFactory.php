@@ -17,7 +17,7 @@ class BuyFactory extends Factory
     {
         return [
             'invoice' => $this->faker->unique()->numberBetween(51111111, 99999999),
-            'total' => $this->faker->decimal(6,2),
+            'total' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10000),
             'date' => $this->faker->date(),
             'supplier_id' => Supplier::all()->random()->id,
             'user_id' => User::all()->random()->id

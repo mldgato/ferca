@@ -18,7 +18,7 @@ class BuySeeder extends Seeder
 
         foreach($buys as $buy)
         {
-            $buy->products()->attach([
+            $buy->buydetails()->product()->attach([
                 rand(1, 33),
                 rand(34, 66),
                 rand(67, 100)
