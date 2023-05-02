@@ -26,6 +26,7 @@ Route::patch('buys/update_quantity', [BuyController::class, 'update_quantity'])-
 Route::patch('buys/update_cost', [BuyController::class, 'update_cost'])->name('admin.stocktaking.buys.update_cost');
 Route::delete('buys/remove_from_cart', [BuyController::class, 'remove_from_cart'])->name('admin.stocktaking.buys.remove_from_cart');
 Route::delete('buys/cancel_buy', [BuyController::class, 'cancel_buy'])->name('admin.stocktaking.buys.cancel_buy');
+Route::get('buys/{buy}/pdf', [BuyController::class, 'pdf'])->name('admin.stocktaking.buys.pdf');
 Route::resource('buys', BuyController::class)->names('admin.stocktaking.buys'); 
 
 Route::resource('customers', CustomerController::class)->names('admin.shop.customers');

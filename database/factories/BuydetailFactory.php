@@ -15,11 +15,13 @@ class BuydetailFactory extends Factory
      */
     public function definition()
     {
+        $product = Product::all()->random()->id;
+        $cost = $product->cost;
         return [
             'buy_id' => Buy::all()->random()->id,
-            'product_id' => Product::all()->random()->id,
-            'quantity' => $this->faker->numberBetween(1, 1000),
-            'cost' => $this->faker->randomFloat(2, 1, 5000),
+            'product_id' => $product,
+            'quantity' => $this->faker->numberBetween(1, 10),
+            'cost' => $cost,
         ];
     }
 }

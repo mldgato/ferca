@@ -1,7 +1,5 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
 @section('content_header')
     <h1>Información de la compra <i class="fas fa-file-alt"></i></h1>
 @stop

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Buy;
 use App\Models\Buydetail;
+use Dompdf\Dompdf;
 
 class BuyController extends Controller
 {
@@ -39,7 +40,7 @@ class BuyController extends Controller
             'cost.*' => 'required|numeric|min:1',
             'quantity.*' => 'required|numeric|min:1',
         ]);
-        
+
         $buy = Buy::create([
             'invoice' => $request->invoice,
             'total' => $request->total,
@@ -81,7 +82,7 @@ class BuyController extends Controller
     public function show(Buy $buy)
     {
         $supplier = Supplier::where('id', $buy->supplier_id)->first();
-        $buydetails = Buydetail::where('buy_id' , $buy->id)->get();
+        $buydetails = Buydetail::where('buy_id', $buy->id)->get();
         return view('admin.stocktaking.buys.show', compact('buy', 'supplier', 'buydetails'));
     }
 
@@ -176,5 +177,16 @@ class BuyController extends Controller
         session()->forget('cart');
         session()->flash('deletesale', 'La compra se ha eliminado exitosamente');
     }
-}
 
+    public function pdf(Buy $buy)
+    {
+        $pdf = new Dompdf();
+        $html = view('admin.stocktaking.buys.pdf', compact('buy'))->render();
+
+        $pdf->loadHtml($html);
+        $pdf->setPaper('letter', 'portrait');
+        $pdf->render();
+
+        return $pdf->stream('buy-' . $buy->id . '.pdf');
+    }
+}

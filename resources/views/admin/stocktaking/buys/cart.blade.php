@@ -1,7 +1,5 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
 @section('content_header')
     <h1>Compra <i class="fas fa-shopping-cart"></i></h1>
 @stop

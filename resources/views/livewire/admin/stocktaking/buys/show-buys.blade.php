@@ -94,6 +94,8 @@
                                     <td class="align-middle text-right">
                                         <a href="{{ route('admin.stocktaking.buys.show', $buy->id) }}"
                                             class="btn btn-primary btn-sm mr-2" title="Agregar a la compra"><i class="fas fa-file-invoice-dollar"></i></a>
+                                        <a href="{{ route('admin.stocktaking.buys.pdf', $buy->id) }}"
+                                            class="btn btn-danger btn-sm mr-2" title="PDF" target="_blank"><i class="fas fa-file-pdf"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

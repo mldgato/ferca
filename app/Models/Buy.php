@@ -9,6 +9,7 @@ class Buy extends Model
 {
     use HasFactory;
     protected $guarded = ['id', 'create_at', 'update_at'];
+    protected $dates = ['date'];
     //Relación uno a muchos inversa
     public function supplier()
     {
