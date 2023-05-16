@@ -136,6 +136,26 @@
 
 @section('js')
     <script type="text/javascript">
+        // Agrega un evento al botón de envío del formulario
+        document.getElementById('btnsubmit').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            // Muestra la ventana de confirmación
+            Swal.fire({
+                title: '¿Estás seguro de proceder con la venta?',
+                text: 'Una vez confirmada, la venta no se puede deshacer.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, proceder',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si se hace clic en "Sí, proceder", envía el formulario
+                    document.getElementById('btnsubmit').disabled = true; // Deshabilita el botón de envío para evitar múltiples envíos
+                    document.getElementById('btnsubmit').form.submit(); // Envía el formulario
+                }
+            });
+        });
         $(".update-quantity").change(function(e) {
             e.preventDefault();
 
