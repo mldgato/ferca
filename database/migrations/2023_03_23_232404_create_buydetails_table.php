@@ -17,8 +17,8 @@ class CreateBuydetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('buy_id');
             $table->unsignedBigInteger('product_id');
-            $table->double('quantity');
-            $table->double('cost');
+            $table->decimal('quantity', 10, 2);
+            $table->decimal('cost', 10, 2);
             $table->foreign('buy_id')->references('id')->on('buys')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

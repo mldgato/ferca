@@ -17,7 +17,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $cost = $this->faker->numberBetween(1, 1000);
+        $cost = $this->faker->numberBetween(100, 10000) / 100;
         $price = ($cost * 0.10) + $cost;
 
         $warehouse = Warehouse::all()->random()->id;

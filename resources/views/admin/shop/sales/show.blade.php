@@ -77,7 +77,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fab fa-quora"></i></span>
                             </div>
-                            <div class="form-control">{{ number_format($sale->total, 2, '.', ',') }}</div>
+                            <div class="form-control">{{ number_format($total, 2, '.', ',') }}</div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fab fa-quora"></i></span>
                             </div>
-                            <div class="form-control">{{ number_format($sale->pay - $sale->total, 2, '.', ',') }}</div>
+                            <div class="form-control">{{ number_format($sale->pay - $total, 2, '.', ',') }}</div>
                         </div>
                     </div>
                 </div>

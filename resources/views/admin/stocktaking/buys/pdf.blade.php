@@ -20,6 +20,9 @@
     th {
         background-color: #f2f2f2;
     }
+    tfoot tr th{
+        text-align: right !important;
+    }
 </style>
 <h1>Ferca</h1>
 <h2>Compra #{{ $buy->id }} - Factura: {{ $buy->invoice }}</h2>
@@ -30,8 +33,7 @@
             <td>Fecha: {{ \Carbon\Carbon::parse($buy->date)->format('d-m-Y') }}</td>
         </tr>
         <tr>
-            <td>Compra realizada por: {{ $buy->user ? $buy->user->name : 'N/A' }}</td>
-            <td>Total: <strong>{{ number_format($buy->total, 2, '.', ',') }}</strong></td>
+            <td colspan="2">Compra realizada por: {{ $buy->user ? $buy->user->name : 'N/A' }}</td>
         </tr>
     </tbody>
 </table>
@@ -48,7 +50,9 @@
             </tr>
         </thead>
         <tbody>
+            @php $total = 0 @endphp
             @foreach ($buy->buydetails as $detail)
+                @php $total += $detail->cost * $detail->quantity @endphp
                 <tr>
                     <td>{{ $detail->product->cod }}</td>
                     <td>{{ $detail->product->name }}</td>
@@ -58,5 +62,12 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="5">
+                    Q. {{ number_format($total, 2, '.', ',') }}
+                </th>
+            </tr>
+        </tfoot>
     </table>
 @endif

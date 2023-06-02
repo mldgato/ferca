@@ -106,7 +106,6 @@ class SalesController extends Controller
     {
         $validatedData = $request->validate([
             'nit' => 'numeric',
-            'total' => 'required|numeric',
             'pay' => 'required|numeric',
             'price.*' => 'required|numeric|min:1',
             'quantity.*' => 'required|numeric|min:1',
@@ -125,7 +124,6 @@ class SalesController extends Controller
 
             $sale = Sale::create([
                 'invoice' => $request->invoice,
-                'total' => $request->total,
                 'pay' => $request->pay,
                 'date' => date('Y-m-d'),
                 'customer_id' => $newCustomer->id,
@@ -134,7 +132,6 @@ class SalesController extends Controller
         } else {
             $sale = Sale::create([
                 'invoice' => $request->invoice,
-                'total' => $request->total,
                 'pay' => $request->pay,
                 'date' => date('Y-m-d'),
                 'customer_id' => $request->customer_id,
@@ -177,15 +174,24 @@ class SalesController extends Controller
 
     public function show(Sale $sale)
     {
-        return view('admin.shop.sales.show', compact('sale'));
+        // Obtener los detalles de venta asociados a la venta
+        $saleDetails = $sale->saledetails;
+
+        // Calcular el total de la venta
+        $total = 0;
+        foreach ($saleDetails as $detail) {
+            $total += $detail->quantity * $detail->price;
+        }
+
+        return view('admin.shop.sales.show', compact('sale', 'total'));
     }
 
-    public function pdf($id)
+    /* public function pdf($id)
     {
         $sale = Sale::with('saledetails.product')->find($id);
 
         $pdf = new Dompdf();
         $pdf->loadView('sales.pdf', compact('sale'));
         return $pdf->stream();
-    }
+    } */
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->string('invoice')->nullable();
-            $table->decimal('total', 10, 2);
             $table->decimal('pay', 10, 2);
             $table->enum('status', [0, 1])->default(1);
             $table->date('date');

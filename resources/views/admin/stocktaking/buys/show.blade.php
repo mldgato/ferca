@@ -7,7 +7,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <span class="text-primary"><i class="fas fa-people-carry"></i> Proveedor</span>
+            <span class="text-primary"><i class="fas fa-people-carry"></i> Proveedor </span><span class="text-danger"><strong>{{ $supplier->company }}</strong></span>
         </div>
         <div class="card-body">
             <div class="row">

@@ -45,11 +45,12 @@ class ShowBuys extends Component
         if ($this->readyToLoad) {
             $buys = DB::table('buys')
                 ->join('suppliers', 'suppliers.id', '=', 'buys.supplier_id')
-                ->select('buys.id', 'suppliers.company', 'buys.invoice', 'buys.total', DB::raw("DATE_FORMAT(buys.date, '%d-%m-%Y') as date"))
+                ->leftJoin('buydetails', 'buys.id', '=', 'buydetails.buy_id')
+                ->select('buys.id', 'suppliers.company', 'buys.invoice', DB::raw("DATE_FORMAT(buys.date, '%d-%m-%Y') as date"), DB::raw('SUM(buydetails.quantity * buydetails.cost) as total'))
                 ->where('suppliers.company', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('buys.invoice', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('buys.total', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('buys.date', 'LIKE', '%' . $this->search . '%')
+                ->groupBy('buys.id', 'suppliers.company', 'buys.invoice', 'buys.date')
                 ->orderBy($this->sort, $this->direction)
                 ->paginate($this->cant);
         } else {

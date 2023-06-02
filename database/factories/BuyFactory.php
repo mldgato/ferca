@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+use DateTime;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Supplier;
@@ -15,10 +16,14 @@ class BuyFactory extends Factory
      */
     public function definition()
     {
+        // Fecha de inicio específica
+        $startDate = new DateTime('2023-05-01');
+
+        // Fecha de fin específica
+        $endDate = date('Y-m-d');
         return [
             'invoice' => $this->faker->unique()->numberBetween(51111111, 99999999),
-            'total' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10000),
-            'date' => $this->faker->date(),
+            'date' => $this->faker->dateTimeBetween($startDate, $endDate),
             'supplier_id' => Supplier::all()->random()->id,
             'user_id' => User::all()->random()->id
         ];

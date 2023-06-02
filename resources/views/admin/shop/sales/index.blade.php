@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Ventas <i class="fas fa-fw fa-store "></i></h1>
 @stop
 
 @section('content')
-    <p>Index</p>
+    
 @stop
 
 @section('css')

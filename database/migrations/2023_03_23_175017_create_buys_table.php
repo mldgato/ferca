@@ -16,7 +16,6 @@ class CreateBuysTable extends Migration
         Schema::create('buys', function (Blueprint $table) {
             $table->id();
             $table->string('invoice');
-            $table->decimal('total', 10, 2);
             $table->date('date');
             $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('user_id');

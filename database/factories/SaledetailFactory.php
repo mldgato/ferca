@@ -18,11 +18,12 @@ class SaledetailFactory extends Factory
      */
     public function definition(): array
     {
+        $product = Product::all()->random();
         return [
             'sale_id' => Sale::all()->random()->id,
-            'product_id' => Product::all()->random()->id,
-            'quantity' => $this->faker->numberBetween(1, 1000),
-            'price' => $this->faker->randomFloat(2, 1, 5000),
+            'product_id' => $product->id,
+            'quantity' => $this->faker->numberBetween(1, 20),
+            'price' => $product->price,
         ];
     }
 }

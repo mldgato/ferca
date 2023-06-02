@@ -346,6 +346,7 @@ return [
         [
             'text'    => 'Lista de clientes',
             'icon'    => 'fas fa-fw fa-user-tag',
+            'icon_color' => 'success',
             'route'  => 'admin.shop.customers.index',
         ],
         ['header' => 'Tienda'],
@@ -353,6 +354,13 @@ return [
             'text'    => 'Venta de productos',
             'icon'    => 'fas fa-fw fa-store',
             'route'  => 'admin.shop.sales.products',
+            'icon_color' => 'danger',
+        ],
+        [
+            'text'    => 'Mis ventas',
+            'icon'    => 'fas fa-fw fa-shopping-bag',
+            'route'  => 'admin.shop.sales.index',
+            'icon_color' => 'info',
         ],
     ],
 
