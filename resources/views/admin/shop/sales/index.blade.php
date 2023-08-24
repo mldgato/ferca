@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    
+    @livewire('admin.shop.sales.show-my-sales')
 @stop
 
 @section('css')
