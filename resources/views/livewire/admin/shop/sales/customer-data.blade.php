@@ -111,19 +111,5 @@
                 <span class="text-danger error">{{ $message }}</span>
             @enderror
         </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="form-group">
-                <label for="invoice">Factura:</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-receipt"></i></span>
-                    </div>
-                    <input type="text" name="invoice" id="invoice" class="form-control">
-                </div>
-            </div>
-        </div>
-        @error('invoice')
-            <span class="text-danger error">{{ $message }}</span>
-        @enderror
     </div>
 </div>

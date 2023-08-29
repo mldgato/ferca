@@ -123,7 +123,6 @@ class SalesController extends Controller
             $newCustomer->save();
 
             $sale = Sale::create([
-                'invoice' => $request->invoice,
                 'pay' => $request->pay,
                 'date' => date('Y-m-d'),
                 'customer_id' => $newCustomer->id,
@@ -131,7 +130,6 @@ class SalesController extends Controller
             ]);
         } else {
             $sale = Sale::create([
-                'invoice' => $request->invoice,
                 'pay' => $request->pay,
                 'date' => date('Y-m-d'),
                 'customer_id' => $request->customer_id,
