@@ -22,6 +22,14 @@ class ShowProducts extends Component
     public $direction = 'asc';
     public $cant = '10';
     public $readyToLoad = false;
+    // Agrega estas variables al principio de la clase de tu componente
+    public $totalRecords = 0;
+    private function calculateRecordRange($page)
+    {
+        $from = ($page - 1) * $this->cant + 1;
+        $to = min($this->cant * $page, $this->totalRecords);
+        return compact('from', 'to');
+    }
 
     protected $paginationTheme = "bootstrap";
     protected $queryString = [
@@ -83,6 +91,10 @@ class ShowProducts extends Component
         $measures = Measure::orderBy('unit', 'asc')->get();
         $warehouses = Warehouse::orderBy('name', 'asc')->get();
         $racks = Rack::where('warehouse_id', $this->warehouse_id)->orderBy('name', 'asc')->get();
+
+        // Inicializa la variable $recordRange antes del condicional
+        $recordRange = ['from' => 0, 'to' => 0];
+
         if ($this->readyToLoad) {
             $search = $this->search;
             $products = Product::where(function ($query) use ($search) {
@@ -92,6 +104,13 @@ class ShowProducts extends Component
             })->where('status', '=', '1')
                 ->orderBy($this->sort, $this->direction)
                 ->paginate($this->cant);
+
+            // Actualiza la variable totalRecords con el conteo total
+            $this->totalRecords = $products->total();
+
+            // Calcula el rango de registros según la página actual
+            $currentPage = $products->currentPage();
+            $recordRange = $this->calculateRecordRange($currentPage);
 
             foreach ($products as $product) {
                 if ($product->quantity == 0) {
@@ -105,7 +124,14 @@ class ShowProducts extends Component
         } else {
             $products = [];
         }
-        return view('livewire.admin.stocktaking.products.show-products', compact('products', 'suppliers', 'measures', 'warehouses', 'racks'));
+        return view('livewire.admin.stocktaking.products.show-products', [
+            'products' => $products,
+            'suppliers' => $suppliers,
+            'measures' => $measures,
+            'warehouses' => $warehouses,
+            'racks' => $racks,
+            'recordRange' => $recordRange, // Pasa el rango de registros a la vista
+        ]);
     }
 
     public function loadProducts()

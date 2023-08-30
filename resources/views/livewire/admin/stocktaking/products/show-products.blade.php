@@ -157,7 +157,20 @@
             </div>
             @if ($products->hasPages())
                 <div class="card-footer">
-                    <div class="d-flex justify-content-end">{{ $products->links() }}</div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            @if ($readyToLoad)
+                                <p>
+                                    Mostrando registros del {{ $recordRange['from'] }} al {{ $recordRange['to'] }} de
+                                    un total de {{ $totalRecords }} registros.
+                                </p>
+                            @endif
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="d-flex justify-content-end">{{ $products->links() }}</div>
+                        </div>
+                    </div>
+
                 </div>
             @endif
         @else
