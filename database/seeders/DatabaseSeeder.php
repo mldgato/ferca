@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /* Storage::deleteDirectory('products');
-        Storage::makeDirectory('products'); */
+        Storage::makeDirectory('products');
 
         \App\Models\User::factory()->create([
             'name' => 'Manuel Dardón',
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'Ferc@23'
         ]);
 
-        /* \App\Models\Supplier::factory(10)->create();
+        \App\Models\Supplier::factory(10)->create();
         $this->call(WarehouseSeeder::class);
         $this->call(RackSeeder::class);
         \App\Models\Measure::factory(7)->create();
