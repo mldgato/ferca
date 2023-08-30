@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => 'Ferretería <b>FERCA</b>',
+    'logo' => '<b>CORFEJISA</b>',
     'logo_img' => 'https://cdn.pixabay.com/photo/2016/03/31/18/24/screwdriver-1294338_960_720.png',
     'logo_img_class' => 'brand-image img-circle elevation-3 bg-light',
     'logo_img_xl' => null,
