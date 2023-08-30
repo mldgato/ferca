@@ -21,24 +21,27 @@ class CustomerData extends Component
 
     public function buscarCliente()
     {
-        $cliente = Customer::where('nit', $this->nit)->first();
+        if ($this->nit !== 'CF') {
+            $cliente = Customer::where('nit', $this->nit)->first();
 
-        if ($cliente) {
-            $this->customer_id = $cliente->id;
-            $this->nit = $cliente->nit;
-            $this->name = $cliente->name;
-            $this->address = $cliente->address;
-            $this->email = $cliente->email;
-            $this->phone = $cliente->phone;
+            if ($cliente) {
+                $this->customer_id = $cliente->id;
+                $this->nit = $cliente->nit;
+                $this->name = $cliente->name;
+                $this->address = $cliente->address;
+                $this->email = $cliente->email;
+                $this->phone = $cliente->phone;
 
-            session()->put('customer_id', $this->customer_id);
-            session()->put('customer_nit', $this->nit);
-            session()->put('customer_name', $this->name);
-            session()->put('customer_address', $this->address);
-            session()->put('customer_email', $this->email);
-            session()->put('customer_phone', $this->phone);
+                session()->put('customer_id', $this->customer_id);
+                session()->put('customer_nit', $this->nit);
+                session()->put('customer_name', $this->name);
+                session()->put('customer_address', $this->address);
+                session()->put('customer_email', $this->email);
+                session()->put('customer_phone', $this->phone);
+            }
         }
     }
+
 
     protected $queryString = [
         'nit' => ['except' => '']

@@ -362,6 +362,12 @@ return [
             'route'  => 'admin.shop.sales.index',
             'icon_color' => 'info',
         ],
+        [
+            'text'    => 'Reporte de ventas',
+            'icon'    => 'fas fa-fw fa-clipboard-list',
+            'route'  => 'admin.shop.sales.list',
+            'icon_color' => 'warning',
+        ],
     ],
 
     /*

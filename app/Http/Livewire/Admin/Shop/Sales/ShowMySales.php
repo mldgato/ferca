@@ -50,13 +50,16 @@ class ShowMySales extends Component
                     ->join('users', 'users.id', '=', 'sales.user_id')
                     ->leftJoin('saledetails', 'sales.id', '=', 'saledetails.sale_id')
                     ->select('sales.id', 'sales.pay', 'customers.nit', 'users.name', DB::raw("DATE_FORMAT(sales.date, '%d-%m-%Y') as date"), DB::raw('SUM(saledetails.quantity * saledetails.price) as total'))
-                    ->where('sales.user_id', auth()->user()->id)
-                    ->where('sales.id', 'LIKE', '%' . $this->search . '%')
-                    ->where('sales.pay', 'LIKE', '%' . $this->search . '%')
-                    ->where('customers.nit', 'LIKE', '%' . $this->search . '%')
-                    ->where('users.name', 'LIKE', '%' . $this->search . '%')
-                    ->groupBy('sales.id', 'sales.pay', 'customers.nit', 'users.name', 'buys.date')
+                    ->where('sales.user_id', auth()->user()->id) // Filtrar por el ID del usuario autenticado
+                    ->where(function ($query) {
+                        $query->where('sales.id', 'LIKE', '%' . $this->search . '%')
+                            ->orWhere('sales.pay', 'LIKE', '%' . $this->search . '%')
+                            ->orWhere('customers.nit', 'LIKE', '%' . $this->search . '%')
+                            ->orWhere('users.name', 'LIKE', '%' . $this->search . '%');
+                    })
+                    ->groupBy('sales.id', 'sales.pay', 'customers.nit', 'users.name', 'sales.date')
                     ->orderBy($this->sort, $this->direction)
+                    ->orderBy('sales.id', 'desc')
                     ->paginate($this->cant);
             } else {
                 $sales = [];

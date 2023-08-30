@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Factories;
-use DateTime;
+
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Supplier;
@@ -16,16 +17,16 @@ class BuyFactory extends Factory
      */
     public function definition()
     {
-        // Fecha de inicio específica
-        $startDate = new DateTime('2023-05-01');
+        $now = Carbon::now();
+        $endDate = $now->format('Y-m-d'); // Fecha de hoy
+        $twoMonthsAgo = $now->subMonths(2);
+        $startDate = $this->faker->dateTimeBetween($twoMonthsAgo, $endDate)->format('Y-m-d');
 
-        // Fecha de fin específica
-        $endDate = date('Y-m-d');
         return [
             'invoice' => $this->faker->unique()->numberBetween(51111111, 99999999),
             'date' => $this->faker->dateTimeBetween($startDate, $endDate),
             'supplier_id' => Supplier::all()->random()->id,
-            'user_id' => User::all()->random()->id
+            'user_id' => User::all()->random()->id,
         ];
     }
 }

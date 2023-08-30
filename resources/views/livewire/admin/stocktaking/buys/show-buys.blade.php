@@ -2,13 +2,6 @@
 
     <div class="card mb-3">
         <div class="card-header">
-            <div class="row mb-2">
-                <div class="col-sm-12 col-md-6">
-                    <span class="text-primary"><i class="fas fa-shopping-basket"></i></span>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                </div>
-            </div>
             <div class="row mt-2">
                 <div class="col-12 col-md-3 mb-2">
                     <div class="d-flex align-items-center">

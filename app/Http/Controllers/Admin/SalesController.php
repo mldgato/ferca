@@ -102,73 +102,80 @@ class SalesController extends Controller
         session()->forget('cart_sale');
         session()->flash('deletesale', 'La venta se ha eliminado exitosamente');
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nit' => 'numeric',
-            'pay' => 'required|numeric',
+            'nit' => ['required', function ($attribute, $value, $fail) {
+                if ($value !== 'CF' && !is_numeric($value)) {
+                    $fail($attribute . ' must be numeric or "CF".');
+                }
+            }],
+            'pay' => ['required', 'numeric', function ($attribute, $value, $fail) use ($request) {
+                if ($value < $request->total) {
+                    $fail($attribute . ' must be at least equal to the total.');
+                }
+            }],
             'price.*' => 'required|numeric|min:1',
             'quantity.*' => 'required|numeric|min:1',
         ]);
 
+        $isNewCustomer = $request->nit === 'CF';
 
-        $customer = Customer::find($request->customer_id);
-        if ($customer === null) {
-            $newCustomer = new Customer();
-            $newCustomer->name = $request->name;
-            $newCustomer->email = $request->email;
-            $newCustomer->nit = $request->nit;
-            $newCustomer->address = $request->address;
-            $newCustomer->phone = $request->phone;
-            $newCustomer->save();
-
-            $sale = Sale::create([
-                'pay' => $request->pay,
-                'date' => date('Y-m-d'),
-                'customer_id' => $newCustomer->id,
-                'user_id' => auth()->id()
-            ]);
-        } else {
-            $sale = Sale::create([
-                'pay' => $request->pay,
-                'date' => date('Y-m-d'),
-                'customer_id' => $request->customer_id,
-                'user_id' => auth()->id()
-            ]);
+        $customer = null;
+        if (!$isNewCustomer) {
+            $customer = Customer::find($request->customer_id);
+            if ($customer === null) {
+                $isNewCustomer = true;
+            }
         }
 
+        if ($isNewCustomer) {
+            $newCustomerData = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'nit' => $request->nit,
+                'address' => $request->address,
+                'phone' => $request->phone,
+            ];
+            $customer = Customer::create($newCustomerData);
+        }
 
+        $saleData = [
+            'pay' => $request->pay,
+            'date' => now(),
+            'customer_id' => $customer->id,
+            'user_id' => auth()->id(),
+        ];
+        $sale = Sale::create($saleData);
 
-        $product_ids = $request->input('product_id');
-        $prices = $request->input('price');
-        $quantitys = $request->input('quantity');
-
-        for ($i = 0; $i < count($product_ids); $i++) {
-            Saledetail::create([
+        foreach ($request->input('product_id') as $index => $productId) {
+            $saledetailData = [
                 'sale_id' => $sale->id,
-                'product_id' => $product_ids[$i],
-                'quantity' => $quantitys[$i],
-                'price' => $prices[$i],
-            ]);
+                'product_id' => $productId,
+                'quantity' => $request->input("quantity.{$index}"),
+                'price' => $request->input("price.{$index}"),
+            ];
+            Saledetail::create($saledetailData);
 
-            $cantidadActual = Product::where('id', $product_ids[$i])->value('quantity');
-            $cantidadNueva = $cantidadActual - $quantitys[$i];
-
-            $product = Product::findOrFail($product_ids[$i]);
-            $product->quantity = $cantidadNueva;
+            $product = Product::findOrFail($productId);
+            $product->quantity -= $saledetailData['quantity'];
             $product->save();
         }
 
-        session()->forget('cart_sale');
-        session()->forget('customer_id');
-        session()->forget('customer_nit');
-        session()->forget('customer_name');
-        session()->forget('customer_address');
-        session()->forget('customer_email');
-        session()->forget('customer_phone');
-        $sale = Sale::find($sale->id);
+        session()->forget([
+            'cart_sale',
+            'customer_id',
+            'customer_nit',
+            'customer_name',
+            'customer_address',
+            'customer_email',
+            'customer_phone',
+        ]);
+
         return redirect()->route('admin.shop.sales.show', compact('sale'));
     }
+
 
     public function show(Sale $sale)
     {
@@ -182,6 +189,11 @@ class SalesController extends Controller
         }
 
         return view('admin.shop.sales.show', compact('sale', 'total'));
+    }
+
+    public function list()
+    {
+        return view('admin.shop.sales.list');
     }
 
     /* public function pdf($id)

@@ -29,15 +29,15 @@ class DatabaseSeeder extends Seeder
             'password' => 'Ferc@23'
         ]);
 
-        \App\Models\Supplier::factory(10)->create();  //Producción
+        \App\Models\Supplier::factory(10)->create();
         $this->call(WarehouseSeeder::class);
         $this->call(RackSeeder::class);
         \App\Models\Measure::factory(7)->create();
-        \App\Models\Product::factory(100)->create();     //Producción
-        \App\Models\Customer::factory(5)->create();         //Producción
-        \App\Models\Buy::factory(10)->create();             //Producción
-        \App\Models\Buydetail::factory(50)->create();       //Producción
-        \App\Models\Sale::factory(10)->create();            //Producción
-        \App\Models\Saledetail::factory(50)->create();   //Producción
+        \App\Models\Product::factory(100)->create();
+        \App\Models\Customer::factory(5)->create();
+        \App\Models\Buy::factory(100)->create();
+        \App\Models\Buydetail::factory(500)->create();
+        \App\Models\Sale::factory(100)->create();
+        \App\Models\Saledetail::factory(500)->create();
     }
 }

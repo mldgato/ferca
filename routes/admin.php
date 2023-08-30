@@ -37,4 +37,5 @@ Route::get('sales/pdf/{id}', [SalesController::class, 'pdf'])->name('admin.shop.
 Route::patch('sales/update_quantity', [SalesController::class, 'update_quantity'])->name('admin.shop.sales.update_quantity');
 Route::delete('sales/remove_from_cart', [SalesController::class, 'remove_from_cart'])->name('admin.shop.sales.remove_from_cart');
 Route::delete('sales/cancel_sale', [SalesController::class, 'cancel_sale'])->name('admin.shop.sales.cancel_sale');
+Route::get('sales/list', [SalesController::class, 'list'])->name('admin.shop.sales.list');
 Route::resource('sales', SalesController::class)->names('admin.shop.sales');

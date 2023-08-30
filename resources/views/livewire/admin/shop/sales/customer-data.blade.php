@@ -7,8 +7,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fab fa-slack-hash"></i></span>
                     </div>
-                    <input type="number" name="nit" id="nit" class="form-control" wire:model="nit"
+                    <input type="text" name="nit" id="nit" class="form-control" list="final_consumer" wire:model="nit"
                         wire:keydown="buscarCliente">
+                    <datalist id="final_consumer">
+                        <option value="CF"></option>
+                    </datalist>
                 </div>
                 @error('taxnumber')
                     <span class="text-danger error">{{ $message }}</span>
@@ -104,7 +107,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fab fa-quora"></i></span>
                     </div>
-                    <input type="number" name="pay" id="pay" class="form-control" wire:model="pay" required>
+                    <input type="number" name="pay" id="pay" class="form-control" wire:model="pay"
+                        required>
                 </div>
             </div>
             @error('pay')
