@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* Storage::deleteDirectory('products');
+        Storage::deleteDirectory('products');
         Storage::makeDirectory('products');
 
         \App\Models\User::factory()->create([
@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Buy::factory(100)->create();
         \App\Models\Buydetail::factory(500)->create();
         \App\Models\Sale::factory(100)->create();
-        \App\Models\Saledetail::factory(500)->create(); */
+        \App\Models\Saledetail::factory(500)->create();
     }
 }
