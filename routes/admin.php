@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\BuyController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\SalesController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.index');
 
@@ -41,3 +42,5 @@ Route::delete('sales/remove_from_cart', [SalesController::class, 'remove_from_ca
 Route::delete('sales/cancel_sale', [SalesController::class, 'cancel_sale'])->name('admin.shop.sales.cancel_sale');
 Route::get('sales/list', [SalesController::class, 'list'])->name('admin.shop.sales.list');
 Route::resource('sales', SalesController::class)->names('admin.shop.sales');
+
+Route::resource('roles', RoleController::class)->names('admin.roles');

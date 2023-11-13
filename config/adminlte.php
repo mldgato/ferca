@@ -294,18 +294,26 @@ return [
 
 
         // Sidebar items:
-        ['header' => 'Configuración de usuario'],
+        ['header' => 'Configuración de usuario', 'can' => 'Usuarios'],
         [
             'text' => 'Usuarios',
-            'icon' => 'fas fa-users',
+            'icon' => 'fas fa-fw fa-users',
             'route'  => 'admin.users.index',
             'icon_color' => 'primary',
             'can' => 'Usuarios'
         ],
-        ['header' => 'Inventario'],
+        [
+            'text' => 'Roles',
+            'icon' => 'fas fa-fw fa-id-card-alt',
+            'route'  => 'admin.roles.index',
+            'icon_color' => 'orange',
+            'can' => 'Usuarios'
+        ],
+        ['header' => 'Inventario', 'can' => 'Proveedores'],
         [
             'text'    => 'Administración',
             'icon'    => 'fas fa-fw fa-toolbox',
+            'can' => 'Proveedores',
             'submenu' => [
                 [
                     'text' => 'Proveedores',

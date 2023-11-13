@@ -101,23 +101,34 @@
       0 => 
       array (
         'header' => 'Configuración de usuario',
+        'can' => 'Usuarios',
       ),
       1 => 
       array (
         'text' => 'Usuarios',
-        'icon' => 'fas fa-users',
+        'icon' => 'fas fa-fw fa-users',
         'route' => 'admin.users.index',
         'icon_color' => 'primary',
         'can' => 'Usuarios',
       ),
       2 => 
       array (
-        'header' => 'Inventario',
+        'text' => 'Roles',
+        'icon' => 'fas fa-fw fa-id-card-alt',
+        'route' => 'admin.roles.index',
+        'icon_color' => 'orange',
+        'can' => 'Usuarios',
       ),
       3 => 
       array (
+        'header' => 'Inventario',
+        'can' => 'Proveedores',
+      ),
+      4 => 
+      array (
         'text' => 'Administración',
         'icon' => 'fas fa-fw fa-toolbox',
+        'can' => 'Proveedores',
         'submenu' => 
         array (
           0 => 
@@ -169,11 +180,11 @@
           ),
         ),
       ),
-      4 => 
+      5 => 
       array (
         'header' => 'Clientes',
       ),
-      5 => 
+      6 => 
       array (
         'text' => 'Lista de clientes',
         'icon' => 'fas fa-fw fa-user-tag',
@@ -181,11 +192,11 @@
         'route' => 'admin.shop.customers.index',
         'can' => 'Clientes',
       ),
-      6 => 
+      7 => 
       array (
         'header' => 'Tienda',
       ),
-      7 => 
+      8 => 
       array (
         'text' => 'Venta de productos',
         'icon' => 'fas fa-fw fa-store',
@@ -193,7 +204,7 @@
         'icon_color' => 'danger',
         'can' => 'Tienda',
       ),
-      8 => 
+      9 => 
       array (
         'text' => 'Mis ventas',
         'icon' => 'fas fa-fw fa-shopping-bag',
@@ -201,7 +212,7 @@
         'icon_color' => 'info',
         'can' => 'Mis ventas',
       ),
-      9 => 
+      10 => 
       array (
         'text' => 'Reporte de ventas',
         'icon' => 'fas fa-fw fa-clipboard-list',
