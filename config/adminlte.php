@@ -300,6 +300,7 @@ return [
             'icon' => 'fas fa-users',
             'route'  => 'admin.users.index',
             'icon_color' => 'primary',
+            'can' => 'Usuarios'
         ],
         ['header' => 'Inventario'],
         [
@@ -311,35 +312,41 @@ return [
                     'icon' => 'fas fa-people-carry',
                     'route'  => 'admin.stocktaking.suppliers.index',
                     'icon_color' => 'primary',
+                    'can' => 'Proveedores'
                 ],
                 [
                     'text' => 'Medidas',
                     'icon' => 'fas fa-ruler-horizontal',
                     'route'  => 'admin.stocktaking.measures.index',
                     'icon_color' => 'secondary',
+                    'can' => 'Medidas'
                 ],
                 [
                     'text' => 'Bodegas',
                     'icon' => 'fas fa-warehouse',
                     'route'  => 'admin.stocktaking.warehouses.index',
                     'icon_color' => 'success',
+                    'can' => 'Bodegas'
                 ],
                 [
                     'text' => 'Estaterías',
                     'icon' => 'fas fa-cubes',
                     'route'  => 'admin.stocktaking.racks.index',
                     'icon_color' => 'warning',
+                    'can' => 'Estanterías'
                 ],
                 [
                     'text' => 'Productos',
                     'icon' => 'fas fa-toolbox',
                     'route'  => 'admin.stocktaking.products.index',
                     'icon_color' => 'danger',
+                    'can' => 'Productos'
                 ],
                 [
                     'text' => 'Compras',
                     'icon' => 'fas fa-shopping-basket',
                     'route'  => 'admin.stocktaking.buys.index',
+                    'can' => 'Compras'
                 ],
             ],
         ],
@@ -349,6 +356,7 @@ return [
             'icon'    => 'fas fa-fw fa-user-tag',
             'icon_color' => 'success',
             'route'  => 'admin.shop.customers.index',
+            'can' => 'Clientes'
         ],
         ['header' => 'Tienda'],
         [
@@ -356,18 +364,21 @@ return [
             'icon'    => 'fas fa-fw fa-store',
             'route'  => 'admin.shop.sales.products',
             'icon_color' => 'danger',
+            'can' => 'Tienda'
         ],
         [
             'text'    => 'Mis ventas',
             'icon'    => 'fas fa-fw fa-shopping-bag',
             'route'  => 'admin.shop.sales.index',
             'icon_color' => 'info',
+            'can' => 'Mis ventas'
         ],
         [
             'text'    => 'Reporte de ventas',
             'icon'    => 'fas fa-fw fa-clipboard-list',
             'route'  => 'admin.shop.sales.list',
             'icon_color' => 'warning',
+            'can' => 'Ventas generales'
         ],
     ],
 

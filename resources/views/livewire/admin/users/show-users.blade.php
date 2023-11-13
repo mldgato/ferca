@@ -81,6 +81,11 @@
                                         <button wire:click="edit({{ $user->id }})" data-toggle="modal"
                                             data-target="#UpdateUserPass" class="btn btn-primary btn-sm mr-2"
                                             title="Editar"><i class="fas fa-lock"></i></button>
+
+                                        <button wire:click="edit({{ $user->id }})" data-toggle="modal"
+                                            data-target="#UpdateUserRole" class="btn btn-warning btn-sm mr-2"
+                                            title="Editar"><i class="fas fa-user-tag"></i></button>
+
                                         @if (auth()->id() === $user->id)
                                             <button class="btn btn-danger btn-sm" disabled><i
                                                     class="fas fa-trash-alt"></i></button>
@@ -89,7 +94,6 @@
                                                 wire:click="$emit('deleteUser', {{ $user->id }}, '{{ $user->name }}')"><i
                                                     class="fas fa-trash-alt"></i></a>
                                         @endif
-
                                     </td>
                                 </tr>
                             @endforeach

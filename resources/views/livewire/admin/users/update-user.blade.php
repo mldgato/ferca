@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="UpdateUserData" tabindex="-1" role="dialog"
-    aria-labelledby="UpdateUserData" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="UpdateUserData" tabindex="-1" role="dialog" aria-labelledby="UpdateUserData"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,11 +100,62 @@
                 <button wire:click="resetFields" type="button" class="btn btn-danger" data-dismiss="modal"><i
                         class="fas fa-window-close"></i> Cerrar</button>
 
-                <button wire:click.prevent="updatePass" type="button" class="btn btn-success" wire:loading.attr="disabled"
-                    wire:loading.class.remove="btn-success" wire:loading.class="btn btn-warning"
-                    wire:target="updatePass"><span wire:loading.remove wire:target="updatePass"><i
-                            class="fas fa-exchange-alt"></i> Actualizar</span><span wire:loading wire:target="updatePass"><i
-                            class="fas fa-spinner fa-pulse"></i> Actualizando</span></button>
+                <button wire:click.prevent="updatePass" type="button" class="btn btn-success"
+                    wire:loading.attr="disabled" wire:loading.class.remove="btn-success"
+                    wire:loading.class="btn btn-warning" wire:target="updatePass"><span wire:loading.remove
+                        wire:target="updatePass"><i class="fas fa-exchange-alt"></i> Actualizar</span><span
+                        wire:loading wire:target="updatePass"><i class="fas fa-spinner fa-pulse"></i>
+                        Actualizando</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div wire:ignore.self class="modal fade" id="UpdateUserRole" tabindex="-1" role="dialog"
+    aria-labelledby="UpdateUserRole" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Asignar roles de usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Usuario:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="name"
+                                placeholder="Escriba el nombre completo del usuario" wire:model="name" disabled>
+                        </div>
+                    </div>
+                    @foreach ($roles as $role)
+                        <div>
+                            <label>
+                                <input type="checkbox" name="roles[]" value="{{ $role->id }}"
+                                    wire:model="selectedRoles"
+                                    {{ in_array($role->id, $selectedRoles) ? 'checked' : '' }}>
+                                {{ $role->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button wire:click="resetFields" type="button" class="btn btn-danger" data-dismiss="modal"><i
+                        class="fas fa-window-close"></i> Cerrar</button>
+
+                <button wire:click.prevent="updateRole" type="button" class="btn btn-success"
+                    wire:loading.attr="disabled" wire:loading.class.remove="btn-success"
+                    wire:loading.class="btn btn-warning" wire:target="updateRole"><span wire:loading.remove
+                        wire:target="updateRole"><i class="fas fa-exchange-alt"></i> Actualizar</span><span
+                        wire:loading wire:target="updateRole"><i class="fas fa-spinner fa-pulse"></i>
+                        Actualizando</span></button>
             </div>
         </div>
     </div>

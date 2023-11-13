@@ -5,11 +5,13 @@ namespace App\Http\Livewire\Admin\Users;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class ShowUsers extends Component
 {
     use WithPagination;
-    public $name, $email, $password, $password_repeat, $status, $user_id;
+    public $user, $name, $email, $password, $password_repeat, $status, $user_id, $user_roles;
+    public $selectedRoles = [];
     public $search;
     public $sort = 'name';
     public $direction = 'asc';
@@ -45,6 +47,7 @@ class ShowUsers extends Component
 
     public function render()
     {
+        $roles = Role::all();
         if ($this->readyToLoad) {
             $users = User::where('status', '1')
                 ->where(function ($query) {
@@ -57,9 +60,14 @@ class ShowUsers extends Component
             $users = [];
         }
 
-        return view('livewire.admin.users.show-users', compact('users'));
-    }
+        // Obtener los roles asignados al usuario actual
+        $rolesUsuario = optional($this->user)->roles ? $this->user->roles->pluck('id')->toArray() : [];
 
+        // Declarar $selectedRoles
+        $selectedRoles = $this->selectedRoles;
+
+        return view('livewire.admin.users.show-users', compact('users', 'roles', 'rolesUsuario', 'selectedRoles'));
+    }
 
     public function loadUsers()
     {
@@ -107,9 +115,11 @@ class ShowUsers extends Component
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
+        $this->user = User::where('id', $id)->first();
         $this->user_id = $id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->selectedRoles = $this->user->roles->pluck('id')->toArray();
     }
 
     public function update()
@@ -161,6 +171,19 @@ class ShowUsers extends Component
             $this->emit('closeModalMessaje', 'Información', 'Usuario eliminado exitósamente.', 'info', 'null');
         } catch (\Exception $e) {
             $this->emit('closeModalMessaje', 'Información', 'No se ha podido eliminar error: ' . $e->getMessage(), 'error', 'null');
+        }
+    }
+
+    public function updateRole()
+    {
+        if ($this->user_id) {
+            $user = User::find($this->user_id);
+
+            // Verifica la existencia de los roles antes de sincronizar
+            $existingRoles = Role::whereIn('id', $this->selectedRoles)->pluck('id')->toArray();
+            $user->syncRoles($existingRoles);
+
+            $this->emit('closeModalMessaje', 'Información', 'Usuario actualizado exitósamente.', 'info', 'UpdateUserRole');
         }
     }
 }
