@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* Storage::deleteDirectory('products');
-        Storage::makeDirectory('products'); */
+        Storage::deleteDirectory('products');
+        Storage::makeDirectory('products');
 
         \App\Models\User::factory()->create([
             'name' => 'Manuel Dardón',
@@ -29,16 +29,16 @@ class DatabaseSeeder extends Seeder
             'password' => 'Ferc@23'
         ]);
 
-       /*  \App\Models\Supplier::factory(10)->create();
+        \App\Models\Supplier::factory(10)->create();
         $this->call(WarehouseSeeder::class);
-        $this->call(RackSeeder::class);*/
+        $this->call(RackSeeder::class);
         $this->call(RoleSeeder::class);
-        /*  \App\Models\Measure::factory(7)->create();
+        \App\Models\Measure::factory(7)->create();
         \App\Models\Product::factory(100)->create();
         \App\Models\Customer::factory(5)->create();
         \App\Models\Buy::factory(100)->create();
         \App\Models\Buydetail::factory(500)->create();
         \App\Models\Sale::factory(100)->create();
-        \App\Models\Saledetail::factory(500)->create(); */
+        \App\Models\Saledetail::factory(500)->create();
     }
 }

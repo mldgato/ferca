@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content_header'); ?>
     <h1>Roles y permisos <i class="fas fa-id-card-alt"></i></h1>
 <?php $__env->stopSection(); ?>
@@ -7,7 +5,11 @@
 <?php $__env->startSection('content'); ?>
     <div class="card mb-3">
         <div class="card-header">
-
+            <div class="d-flex justify-content-end">
+                <a href="<?php echo e(route('admin.roles.create')); ?>" type="button" class="btn btn-outline-primary btn-lg ml-2">
+                    <i class="fas fa-plus-circle"></i> Nuevo Rol
+                </a>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -23,7 +25,8 @@
                             <tr>
                                 <td><?php echo e($role->name); ?></td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-success btn-sm mr-2" title="Editar"><i class="fas fa-edit fa-fw"></i></a>
+                                    <a href="<?php echo e(route('admin.roles.edit', $role->id)); ?>" class="btn btn-success btn-sm mr-2"
+                                        title="Editar"><i class="fas fa-edit fa-fw"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

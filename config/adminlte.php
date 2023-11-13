@@ -358,7 +358,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'Clientes'],
+        ['header' => 'Clientes', 'can' => 'Clientes'],
         [
             'text'    => 'Lista de clientes',
             'icon'    => 'fas fa-fw fa-user-tag',
@@ -366,7 +366,7 @@ return [
             'route'  => 'admin.shop.customers.index',
             'can' => 'Clientes'
         ],
-        ['header' => 'Tienda'],
+        ['header' => 'Tienda', 'can' => 'Tienda'],
         [
             'text'    => 'Venta de productos',
             'icon'    => 'fas fa-fw fa-store',

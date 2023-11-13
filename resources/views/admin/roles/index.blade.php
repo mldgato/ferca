@@ -7,7 +7,11 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('admin.roles.create') }}" type="button" class="btn btn-outline-primary btn-lg ml-2">
+                    <i class="fas fa-plus-circle"></i> Nuevo Rol
+                </a>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -23,7 +27,8 @@
                             <tr>
                                 <td>{{ $role->name }}</td>
                                 <td class="text-center">
-                                    <a href="{{route('admin.roles.edit')}}" class="btn btn-success btn-sm mr-2" title="Editar"><i class="fas fa-edit fa-fw"></i></a>
+                                    <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-success btn-sm mr-2"
+                                        title="Editar"><i class="fas fa-edit fa-fw"></i></a>
                                 </td>
                             </tr>
                         @endforeach

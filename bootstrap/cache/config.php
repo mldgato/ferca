@@ -183,6 +183,7 @@
       5 => 
       array (
         'header' => 'Clientes',
+        'can' => 'Clientes',
       ),
       6 => 
       array (
@@ -195,6 +196,7 @@
       7 => 
       array (
         'header' => 'Tienda',
+        'can' => 'Tienda',
       ),
       8 => 
       array (

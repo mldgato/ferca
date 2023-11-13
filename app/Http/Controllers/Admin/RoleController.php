@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -22,7 +23,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::all();
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -30,7 +32,15 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $role = Role::create($request->all());
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role)->with('RolCreado', '¡El Rol se creó con éxito!');
     }
 
     /**
@@ -44,17 +54,25 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $role->update($request->all());
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role)->with('RolActualizado', '¡El Rol se actualizó con éxito!');
     }
 
     /**
