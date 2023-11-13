@@ -24,7 +24,7 @@
         text-align: right !important;
     }
 </style>
-<h1>Ferca</h1>
+<h1>CORFEJISA</h1>
 <h2>Compra #<?php echo e($buy->id); ?> - Factura: <?php echo e($buy->invoice); ?></h2>
 <table>
     <tbody>

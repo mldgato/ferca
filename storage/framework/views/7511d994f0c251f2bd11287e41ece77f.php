@@ -1,3 +1,5 @@
+
+
 <?php $layoutHelper = app('JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper'); ?>
 
 <?php $__env->startSection('adminlte_css'); ?>
