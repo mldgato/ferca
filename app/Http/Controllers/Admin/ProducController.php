@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class ProducController extends Controller
 {
@@ -18,6 +19,19 @@ class ProducController extends Controller
         return view('admin.stocktaking.products.index');
     }
 
+    public function inventorypdf()
+    {
+        $pdf = new Dompdf();
+        $products = Product::all();
+        $html = view('admin.stocktaking.products.pdfinventory', compact('products'))->render();
+
+        $pdf->loadHtml($html);
+        $pdf->setPaper('letter', 'portrait');
+        $pdf->render();
+
+        return $pdf->stream('inventory ' . date('d-m-Y') . '.pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +39,6 @@ class ProducController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -47,7 +60,6 @@ class ProducController extends Controller
      */
     public function show(Product $product)
     {
-        
     }
 
     /**

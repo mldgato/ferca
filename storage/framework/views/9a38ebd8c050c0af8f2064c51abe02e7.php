@@ -1,15 +1,29 @@
 <div wire:init="loadProducts">
-    @include('livewire.admin.stocktaking.products.update-product')
+    <?php echo $__env->make('livewire.admin.stocktaking.products.update-product', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="card mb-3">
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.stocktaking.products.inventorypdf') }}"
+                        <a href="<?php echo e(route('admin.stocktaking.products.inventorypdf')); ?>"
                             class="btn btn-outline-danger btn-lg ml-2">
                             <i class="fas fa-file-pdf"></i> Descargar Inventario
                         </a>
-                        @livewire('admin.stocktaking.products.create-product')
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('admin.stocktaking.products.create-product')->html();
+} elseif ($_instance->childHasBeenRendered('l2258423072-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l2258423072-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l2258423072-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l2258423072-0');
+} else {
+    $response = \Livewire\Livewire::mount('admin.stocktaking.products.create-product');
+    $html = $response->html();
+    $_instance->logRenderedChild('l2258423072-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                     </div>
                 </div>
             </div>
@@ -39,7 +53,7 @@
                 </div>
             </div>
         </div>
-        @if (count($products))
+        <?php if(count($products)): ?>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-sm table-striped table-hover table-bordered">
@@ -48,104 +62,104 @@
                                 <th>&nbsp;</th>
                                 <th style="cursor: pointer" wire:click="order('cod')">
                                     cod.
-                                    @if ($sort == 'cod')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'cod'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('name')">
                                     Producto
-                                    @if ($sort == 'name')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'name'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('brand')">
                                     Marca
-                                    @if ($sort == 'brand')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'brand'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('quantity')">
                                     Cant.
-                                    @if ($sort == 'quantity')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'quantity'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('cost')">
                                     Costo
-                                    @if ($sort == 'cost')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'cost'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th style="cursor: pointer" wire:click="order('price')">
                                     Precio
-                                    @if ($sort == 'price')
-                                        @if ($direction == 'asc')
+                                    <?php if($sort == 'price'): ?>
+                                        <?php if($direction == 'asc'): ?>
                                             <i class="fas fa-sort-up ml-4"></i>
-                                        @else
+                                        <?php else: ?>
                                             <i class="fas fa-sort-down ml-4"></i>
-                                        @endif
-                                    @else
+                                        <?php endif; ?>
+                                    <?php else: ?>
                                         <i class="fas fa-sort ml-4"></i>
-                                    @endif
+                                    <?php endif; ?>
                                 </th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
-                                <tr class="{{ $product->claseFila }}">
+                            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <tr class="<?php echo e($product->claseFila); ?>">
                                     <td class="align-middle" style="width: 100px; height=100px"><img class="img-fluid"
-                                            src="@if ($product->image) {{ Storage::url($product->image->url) }} @else https://cdn.pixabay.com/photo/2012/02/22/20/02/tools-15539_960_720.jpg @endif"
+                                            src="<?php if($product->image): ?> <?php echo e(Storage::url($product->image->url)); ?> <?php else: ?> https://cdn.pixabay.com/photo/2012/02/22/20/02/tools-15539_960_720.jpg <?php endif; ?>"
                                             alt="">
                                     </td>
-                                    <td class="align-middle">{{ $product->cod }}</td>
-                                    <td class="align-middle">{{ $product->name }}</td>
-                                    <td class="align-middle">{{ $product->brand }}</td>
-                                    <td class="align-middle">{{ $product->quantity }}</td>
-                                    <td class="align-middle">{{ $product->presentCost() }}</td>
-                                    <td class="align-middle">{{ $product->presentPrice() }}</td>
+                                    <td class="align-middle"><?php echo e($product->cod); ?></td>
+                                    <td class="align-middle"><?php echo e($product->name); ?></td>
+                                    <td class="align-middle"><?php echo e($product->brand); ?></td>
+                                    <td class="align-middle"><?php echo e($product->quantity); ?></td>
+                                    <td class="align-middle"><?php echo e($product->presentCost()); ?></td>
+                                    <td class="align-middle"><?php echo e($product->presentPrice()); ?></td>
 
                                     <td class="align-middle text-right">
-                                        <button wire:click="edit({{ $product->id }})" data-toggle="modal"
+                                        <button wire:click="edit(<?php echo e($product->id); ?>)" data-toggle="modal"
                                             data-target=".UpdateWarehouse" class="btn btn-primary btn-sm mr-2"><i
                                                 class="fas fa-edit fa-fw"></i></button>
 
                                         <a class="btn btn-danger btn-sm"
-                                            wire:click="$emit('deleteProduct', {{ $product->id }}, '{{ $product->name }}')"><i
+                                            wire:click="$emit('deleteProduct', <?php echo e($product->id); ?>, '<?php echo e($product->name); ?>')"><i
                                                 class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -163,31 +177,31 @@
                     </table>
                 </div>
             </div>
-            @if ($products->hasPages())
+            <?php if($products->hasPages()): ?>
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            @if ($readyToLoad)
+                            <?php if($readyToLoad): ?>
                                 <p>
-                                    Mostrando registros del {{ $recordRange['from'] }} al {{ $recordRange['to'] }} de
-                                    un total de {{ $totalRecords }} registros.
+                                    Mostrando registros del <?php echo e($recordRange['from']); ?> al <?php echo e($recordRange['to']); ?> de
+                                    un total de <?php echo e($totalRecords); ?> registros.
                                 </p>
-                            @endif
+                            <?php endif; ?>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <div class="d-flex justify-content-end">{{ $products->links() }}</div>
+                            <div class="d-flex justify-content-end"><?php echo e($products->links()); ?></div>
                         </div>
                     </div>
 
                 </div>
-            @endif
-        @else
+            <?php endif; ?>
+        <?php else: ?>
             <div class="card-body">
                 <strong class="text-danger">No se han encontrado registros...</strong>
             </div>
-        @endif
+        <?php endif; ?>
     </div>
-    @section('js')
+    <?php $__env->startSection('js'); ?>
         <script type="text/javascript">
             Livewire.on('closeModalMessaje', (title, message, type, mymodal) => {
                 if (mymodal != 'null') {
@@ -220,5 +234,6 @@
                 });
             });
         </script>
-    @stop
+    <?php $__env->stopSection(); ?>
 </div>
+<?php /**PATH C:\xampp\htdocs\ferca\resources\views/livewire/admin/stocktaking/products/show-products.blade.php ENDPATH**/ ?>

@@ -19,8 +19,10 @@ Route::resource('suppliers', SupplierController::class)->names('admin.stocktakin
 Route::resource('measures', MeasureController::class)->names('admin.stocktaking.measures');
 Route::resource('warehouses', WarehouseController::class)->names('admin.stocktaking.warehouses');
 Route::resource('racks', RackController::class)->names('admin.stocktaking.racks');
-Route::resource('products', ProducController::class)->names('admin.stocktaking.products');
 Route::resource('users', UserController::class)->names('admin.users');
+
+Route::get('products/inventorypdf', [ProducController::class, 'inventorypdf'])->name('admin.stocktaking.products.inventorypdf');
+Route::resource('products', ProducController::class)->names('admin.stocktaking.products');
 
 
 Route::get('buys/cart/{supplier}', [BuyController::class, 'cart'])->name('admin.stocktaking.buys.cart');

@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('adminlte_css_pre'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css')); ?>">
 <?php $__env->stopSection(); ?>

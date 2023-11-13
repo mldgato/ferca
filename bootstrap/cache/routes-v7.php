@@ -60,7 +60,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::J1P766ldXaN5m0dL',
+            '_route' => 'generated::2LOwpuDyYQiluJBG',
           ),
           1 => NULL,
           2 => 
@@ -170,7 +170,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::obXECx3xIQPwt6bC',
+            '_route' => 'generated::TSRPW56SxkFqzXzo',
           ),
           1 => NULL,
           2 => 
@@ -227,7 +227,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ernBwaajdxdvEirI',
+            '_route' => 'generated::F2r0RdB4a6DONIkL',
           ),
           1 => NULL,
           2 => 
@@ -300,7 +300,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Z3TLvizcA0pDC7Nk',
+            '_route' => 'generated::qef01t5Owv8bpONq',
           ),
           1 => NULL,
           2 => 
@@ -430,7 +430,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OJLrBFRcA3DqoYDd',
+            '_route' => 'generated::WBgbY3SKbxiL3g8U',
           ),
           1 => NULL,
           2 => 
@@ -508,7 +508,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::7RH3OR8OAKywuHTx',
+            '_route' => 'generated::SvW3aDDkdTOvk3q2',
           ),
           1 => NULL,
           2 => 
@@ -528,7 +528,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::SHKCJKt3KUIDEdEY',
+            '_route' => 'generated::K4eAFhymIFZuVuBs',
           ),
           1 => NULL,
           2 => 
@@ -606,7 +606,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::r5di8OopJnadUYnv',
+            '_route' => 'generated::Ydk2qzq2XLZeNtWi',
           ),
           1 => NULL,
           2 => 
@@ -626,7 +626,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::P9alWkoKL3OuDZ7w',
+            '_route' => 'generated::bLGWj8iIUtLYrpCc',
           ),
           1 => NULL,
           2 => 
@@ -904,62 +904,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/admin/products' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.index',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.store',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/admin/products/create' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.create',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/admin/users' => 
       array (
         0 => 
@@ -1003,6 +947,82 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'admin.users.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/products/inventorypdf' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.inventorypdf',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/products' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/products/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.create',
           ),
           1 => NULL,
           2 => 
@@ -1416,7 +1436,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/livewire/message/([^/]++)(*:65)|/([^/]++)/livewire/message/([^/]++)(*:107)|/livewire/preview\\-file/([^/]++)(*:147)|/admin/(?|s(?|uppliers/([^/]++)(?|(*:189)|/edit(*:202)|(*:210))|ales/(?|add_sale/([^/]++)(*:244)|pdf/([^/]++)(*:264)|([^/]++)(?|(*:283)|/edit(*:296)|(*:304))))|measures/([^/]++)(?|(*:335)|/edit(*:348)|(*:356))|warehouses/([^/]++)(?|(*:387)|/edit(*:400)|(*:408))|r(?|acks/([^/]++)(?|(*:437)|/edit(*:450)|(*:458))|oles/([^/]++)(?|(*:483)|/edit(*:496)|(*:504)))|products/([^/]++)(?|(*:534)|/edit(*:547)|(*:555))|users/([^/]++)(?|(*:581)|/edit(*:594)|(*:602))|buys/(?|cart/([^/]++)(*:632)|add_buy/([^/]++)(*:656)|([^/]++)(?|/(?|pdf(*:682)|edit(*:694))|(*:703)))|customers/([^/]++)(?|(*:734)|/edit(*:747)|(*:755))))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/livewire/message/([^/]++)(*:65)|/([^/]++)/livewire/message/([^/]++)(*:107)|/livewire/preview\\-file/([^/]++)(*:147)|/admin/(?|s(?|uppliers/([^/]++)(?|(*:189)|/edit(*:202)|(*:210))|ales/(?|add_sale/([^/]++)(*:244)|pdf/([^/]++)(*:264)|([^/]++)(?|(*:283)|/edit(*:296)|(*:304))))|measures/([^/]++)(?|(*:335)|/edit(*:348)|(*:356))|warehouses/([^/]++)(?|(*:387)|/edit(*:400)|(*:408))|r(?|acks/([^/]++)(?|(*:437)|/edit(*:450)|(*:458))|oles/([^/]++)(?|(*:483)|/edit(*:496)|(*:504)))|users/([^/]++)(?|(*:531)|/edit(*:544)|(*:552))|products/([^/]++)(?|(*:581)|/edit(*:594)|(*:602))|buys/(?|cart/([^/]++)(*:632)|add_buy/([^/]++)(*:656)|([^/]++)(?|/(?|pdf(*:682)|edit(*:694))|(*:703)))|customers/([^/]++)(?|(*:734)|/edit(*:747)|(*:755))))/?$}sDu',
     ),
     3 => 
     array (
@@ -2085,95 +2105,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      534 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.show',
-          ),
-          1 => 
-          array (
-            0 => 'product',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      547 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.edit',
-          ),
-          1 => 
-          array (
-            0 => 'product',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      555 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.update',
-          ),
-          1 => 
-          array (
-            0 => 'product',
-          ),
-          2 => 
-          array (
-            'PUT' => 0,
-            'PATCH' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.stocktaking.products.destroy',
-          ),
-          1 => 
-          array (
-            0 => 'product',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      581 => 
+      531 => 
       array (
         0 => 
         array (
@@ -2196,7 +2128,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      594 => 
+      544 => 
       array (
         0 => 
         array (
@@ -2219,7 +2151,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      602 => 
+      552 => 
       array (
         0 => 
         array (
@@ -2250,6 +2182,94 @@ app('router')->setCompiledRoutes(
           1 => 
           array (
             0 => 'user',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      581 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.show',
+          ),
+          1 => 
+          array (
+            0 => 'product',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      594 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.edit',
+          ),
+          1 => 
+          array (
+            0 => 'product',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      602 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.update',
+          ),
+          1 => 
+          array (
+            0 => 'product',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.stocktaking.products.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'product',
           ),
           2 => 
           array (
@@ -2593,7 +2613,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::J1P766ldXaN5m0dL' => 
+    'generated::2LOwpuDyYQiluJBG' => 
     array (
       'methods' => 
       array (
@@ -2616,7 +2636,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::J1P766ldXaN5m0dL',
+        'as' => 'generated::2LOwpuDyYQiluJBG',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2862,7 +2882,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::obXECx3xIQPwt6bC' => 
+    'generated::TSRPW56SxkFqzXzo' => 
     array (
       'methods' => 
       array (
@@ -2884,7 +2904,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::obXECx3xIQPwt6bC',
+        'as' => 'generated::TSRPW56SxkFqzXzo',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2976,7 +2996,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ernBwaajdxdvEirI' => 
+    'generated::F2r0RdB4a6DONIkL' => 
     array (
       'methods' => 
       array (
@@ -2999,7 +3019,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ernBwaajdxdvEirI',
+        'as' => 'generated::F2r0RdB4a6DONIkL',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3131,7 +3151,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Z3TLvizcA0pDC7Nk' => 
+    'generated::qef01t5Owv8bpONq' => 
     array (
       'methods' => 
       array (
@@ -3154,7 +3174,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Z3TLvizcA0pDC7Nk',
+        'as' => 'generated::qef01t5Owv8bpONq',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3407,7 +3427,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OJLrBFRcA3DqoYDd' => 
+    'generated::WBgbY3SKbxiL3g8U' => 
     array (
       'methods' => 
       array (
@@ -3430,7 +3450,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OJLrBFRcA3DqoYDd',
+        'as' => 'generated::WBgbY3SKbxiL3g8U',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3648,7 +3668,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::7RH3OR8OAKywuHTx' => 
+    'generated::SvW3aDDkdTOvk3q2' => 
     array (
       'methods' => 
       array (
@@ -3660,7 +3680,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::7RH3OR8OAKywuHTx',
+        'as' => 'generated::SvW3aDDkdTOvk3q2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3676,7 +3696,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::SHKCJKt3KUIDEdEY' => 
+    'generated::K4eAFhymIFZuVuBs' => 
     array (
       'methods' => 
       array (
@@ -3688,7 +3708,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::SHKCJKt3KUIDEdEY',
+        'as' => 'generated::K4eAFhymIFZuVuBs',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3813,7 +3833,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::r5di8OopJnadUYnv' => 
+    'generated::Ydk2qzq2XLZeNtWi' => 
     array (
       'methods' => 
       array (
@@ -3830,13 +3850,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000007bb0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000009980000000000000000";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::r5di8OopJnadUYnv',
+        'as' => 'generated::Ydk2qzq2XLZeNtWi',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3852,7 +3872,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::P9alWkoKL3OuDZ7w' => 
+    'generated::bLGWj8iIUtLYrpCc' => 
     array (
       'methods' => 
       array (
@@ -3868,13 +3888,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:47:"function () {
     return \\view(\'auth.login\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000007bd0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000099a0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::P9alWkoKL3OuDZ7w',
+        'as' => 'generated::bLGWj8iIUtLYrpCc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3909,7 +3929,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:54:"function () {
         return \\view(\'dashboard\');
-    }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000007c10000000000000000";}}',
+    }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000099e0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -5025,270 +5045,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'admin.stocktaking.products.index' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'admin/products',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.index',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@index',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@index',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.create' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'admin/products/create',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.create',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@create',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@create',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.store' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'admin/products',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.store',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@store',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@store',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'admin/products/{product}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.show',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@show',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@show',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'admin/products/{product}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.edit',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@edit',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@edit',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'admin/products/{product}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.update',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@update',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@update',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.stocktaking.products.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'admin/products/{product}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'as' => 'admin.stocktaking.products.destroy',
-        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@destroy',
-        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@destroy',
-        'namespace' => NULL,
-        'prefix' => 'admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'admin.users.index' => 
     array (
       'methods' => 
@@ -5533,6 +5289,308 @@ app('router')->setCompiledRoutes(
         'as' => 'admin.users.destroy',
         'uses' => 'App\\Http\\Controllers\\Admin\\UserController@destroy',
         'controller' => 'App\\Http\\Controllers\\Admin\\UserController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.inventorypdf' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/products/inventorypdf',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@inventorypdf',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@inventorypdf',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'admin.stocktaking.products.inventorypdf',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/products',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.index',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@index',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@index',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/products/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.create',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@create',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@create',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/products',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.store',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@store',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@store',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/products/{product}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.show',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@show',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@show',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/products/{product}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.edit',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@edit',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@edit',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'admin/products/{product}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.update',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@update',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@update',
+        'namespace' => NULL,
+        'prefix' => 'admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.stocktaking.products.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'admin/products/{product}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'admin.stocktaking.products.destroy',
+        'uses' => 'App\\Http\\Controllers\\admin\\ProducController@destroy',
+        'controller' => 'App\\Http\\Controllers\\admin\\ProducController@destroy',
         'namespace' => NULL,
         'prefix' => 'admin',
         'where' => 

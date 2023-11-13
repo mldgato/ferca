@@ -1,3 +1,5 @@
+
+
 <?php ( $dashboard_url = View::getSection('dashboard_url') ?? config('adminlte.dashboard_url', 'home') ); ?>
 
 <?php if(config('adminlte.use_route_url', false)): ?>
