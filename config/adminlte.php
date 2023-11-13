@@ -296,9 +296,10 @@ return [
         // Sidebar items:
         ['header' => 'Configuración de usuario'],
         [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-users',
+            'route'  => 'admin.users.index',
+            'icon_color' => 'primary',
         ],
         ['header' => 'Inventario'],
         [

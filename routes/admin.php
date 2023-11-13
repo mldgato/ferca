@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProducController;
 use App\Http\Controllers\admin\BuyController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\SalesController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.index');
 
@@ -18,6 +19,7 @@ Route::resource('measures', MeasureController::class)->names('admin.stocktaking.
 Route::resource('warehouses', WarehouseController::class)->names('admin.stocktaking.warehouses');
 Route::resource('racks', RackController::class)->names('admin.stocktaking.racks');
 Route::resource('products', ProducController::class)->names('admin.stocktaking.products');
+Route::resource('users', UserController::class)->names('admin.users');
 
 
 Route::get('buys/cart/{supplier}', [BuyController::class, 'cart'])->name('admin.stocktaking.buys.cart');

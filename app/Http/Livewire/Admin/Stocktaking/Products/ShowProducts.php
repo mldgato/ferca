@@ -16,7 +16,7 @@ class ShowProducts extends Component
 {
     use WithFileUploads;
     use WithPagination;
-    public $cod, $name, $brand, $quantity, $cost, $price, $supplier_id, $measure_id, $warehouse_id, $rack_id, $product_id, $new_image, $identificador, $muestra, $url;
+    public $cod, $name, $brand, $quantity, $cost, $price, $supplier_id, $measure_id, $warehouse_id, $rack_id, $product_id, $new_image, $identificador, $muestra, $url, $status;
     public $search;
     public $sort = 'name';
     public $direction = 'asc';
@@ -218,6 +218,19 @@ class ShowProducts extends Component
 
             $this->resetFields();
             $this->emit('closeModalMessaje', 'Información actualizada', 'Producto actualizado exitosamente.', 'success', 'UpdateNewSupplier');
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $product = Product::find($id);
+            $product->update([
+                'status' => '2'
+            ]);
+            $this->emit('closeModalMessaje', 'Información', 'Producto eliminado exitósamente.', 'info', 'null');
+        } catch (\Exception $e) {
+            $this->emit('closeModalMessaje', 'Información', 'No se ha podido eliminar error: ' . $e->getMessage(), 'error', 'null');
         }
     }
 }

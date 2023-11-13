@@ -135,6 +135,10 @@
                                         <button wire:click="edit({{ $product->id }})" data-toggle="modal"
                                             data-target=".UpdateWarehouse" class="btn btn-primary btn-sm mr-2"><i
                                                 class="fas fa-edit fa-fw"></i></button>
+
+                                        <a class="btn btn-danger btn-sm"
+                                            wire:click="$emit('deleteProduct', {{ $product->id }}, '{{ $product->name }}')"><i
+                                                class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -192,6 +196,23 @@
                     text: message,
                     showConfirmButton: false,
                     timer: 3000
+                });
+            });
+
+            Livewire.on('deleteProduct', (ProductId, ProductName) => {
+                Swal.fire({
+                    title: "Eliminar producto",
+                    html: "<p>¿Está seguro que quiere eliminar el producto: <strong>" + ProductName +
+                        "</strong>?</p><p>Ya no podrá utilizarlo para compras y ventas.</p>",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Si, Eliminar!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emitTo('admin.stocktaking.products.show-products', 'delete', ProductId);
+                    }
                 });
             });
         </script>
