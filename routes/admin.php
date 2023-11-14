@@ -10,8 +10,8 @@ use App\Http\Controllers\admin\ProducController;
 use App\Http\Controllers\admin\BuyController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\SalesController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\RoleController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.index');
 
