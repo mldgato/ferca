@@ -5,6 +5,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-end">
+                        <a href="{{ route('admin.stocktaking.products.excelinventory') }}"
+                            class="btn btn-outline-success btn-lg ml-2">
+                            <i class="fas fa-file-excel"></i> Descargar Inventario
+                        </a>
                         <a href="{{ route('admin.stocktaking.products.inventorypdf') }}"
                             class="btn btn-outline-danger btn-lg ml-2">
                             <i class="fas fa-file-pdf"></i> Descargar Inventario

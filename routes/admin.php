@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\RackController;
 use App\Http\Controllers\admin\ProducController;
 use App\Http\Controllers\admin\BuyController;
 use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\admin\ExcelController;
 use App\Http\Controllers\admin\SalesController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\RoleController;
@@ -21,6 +22,7 @@ Route::resource('warehouses', WarehouseController::class)->names('admin.stocktak
 Route::resource('racks', RackController::class)->names('admin.stocktaking.racks');
 Route::resource('users', UserController::class)->names('admin.users');
 
+Route::get('products/excelinventory', [ProducController::class, 'excelinventory'])->name('admin.stocktaking.products.excelinventory');
 Route::get('products/inventorypdf', [ProducController::class, 'inventorypdf'])->name('admin.stocktaking.products.inventorypdf');
 Route::resource('products', ProducController::class)->names('admin.stocktaking.products');
 
@@ -46,3 +48,5 @@ Route::get('sales/list', [SalesController::class, 'list'])->name('admin.shop.sal
 Route::resource('sales', SalesController::class)->names('admin.shop.sales');
 
 Route::resource('roles', RoleController::class)->names('admin.roles');
+
+
