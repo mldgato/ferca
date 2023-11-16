@@ -92,7 +92,8 @@
                                     <td><a href="tel:{{ $customer->phone }}">{{ $customer->phone }}</a></td>
                                     <td><a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a></td>
                                     <td class="text-right">
-                                        <a href="" class="btn btn-success btn-sm mr-2" title="Compras del cliente"><i
+                                        <a href="{{ route('admin.shop.customers.show', $customer->id) }}"
+                                            class="btn btn-success btn-sm mr-2" title="Compras del cliente"><i
                                                 class="fas fa-wallet"></i></a>
                                     </td>
                                 </tr>

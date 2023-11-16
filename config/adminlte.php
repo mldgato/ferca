@@ -361,7 +361,7 @@ return [
         ['header' => 'Clientes', 'can' => 'Clientes'],
         [
             'text'    => 'Lista de clientes',
-            'icon'    => 'fas fa-fw fa-user-tag',
+            'icon'    => 'fas fa-fw fa-child',
             'icon_color' => 'success',
             'route'  => 'admin.shop.customers.index',
             'can' => 'Clientes'

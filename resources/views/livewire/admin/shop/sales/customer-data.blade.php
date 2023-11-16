@@ -7,8 +7,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fab fa-slack-hash"></i></span>
                     </div>
-                    <input type="text" name="nit" id="nit" class="form-control" list="final_consumer" wire:model="nit"
-                        wire:keydown="buscarCliente">
+                    <input type="text" name="nit" id="nit" class="form-control" list="final_consumer"
+                        wire:model="nit" wire:keydown="buscarCliente" wire:blur="buscarCliente" placeholder="NIT o CF">
                     <datalist id="final_consumer">
                         <option value="CF"></option>
                     </datalist>
@@ -26,7 +26,7 @@
                         <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
                     </div>
                     <input type="text" name="name" id="name" class="form-control" wire:model="name"
-                        value="{{ session()->get('customer_name') }}" required>
+                        value="{{ session()->get('customer_name') }}" @if($clienteEncontrado) readonly @endif required>
                     <input type="hidden" name="customer_id" wire:model="customer_id"
                         value="{{ session()->get('customer_id') }}">
                 </div>
@@ -43,7 +43,7 @@
                         <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
                     </div>
                     <input type="email" name="email" id="email" class="form-control" wire:model="email"
-                        required>
+                    @if($clienteEncontrado) readonly @endif required>
                 </div>
             </div>
             @error('email')
@@ -60,7 +60,7 @@
                         <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
                     </div>
                     <input type="text" name="address" id="address" class="form-control" wire:model="address"
-                        required>
+                    @if($clienteEncontrado) readonly @endif required>
                 </div>
             </div>
             @error('address')
@@ -75,7 +75,7 @@
                         <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
                     </div>
                     <input type="text" name="phone" id="phone" class="form-control" wire:model="phone"
-                        required>
+                    @if($clienteEncontrado) readonly @endif required>
                 </div>
             </div>
             @error('phone')

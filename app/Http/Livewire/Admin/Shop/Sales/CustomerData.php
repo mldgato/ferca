@@ -18,6 +18,7 @@ class CustomerData extends Component
     public $pay;
     public $changeMoney;
     public $change;
+    public $clienteEncontrado = false;
 
     public function buscarCliente()
     {
@@ -38,6 +39,10 @@ class CustomerData extends Component
                 session()->put('customer_address', $this->address);
                 session()->put('customer_email', $this->email);
                 session()->put('customer_phone', $this->phone);
+                $this->clienteEncontrado = true;
+            } else {
+                // Restablecer el modo de solo lectura si no se encontró un cliente
+                $this->clienteEncontrado = false;
             }
         }
     }

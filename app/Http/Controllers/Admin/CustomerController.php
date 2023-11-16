@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -34,10 +36,24 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Customer $customer)
     {
-        //
+        $sales = DB::table('sales')
+            ->join('customers', 'customers.id', '=', 'sales.customer_id')
+            ->join('users', 'users.id', '=', 'sales.user_id')
+            ->leftJoin('saledetails', 'sales.id', '=', 'saledetails.sale_id')
+            ->select('sales.id', 'sales.pay', 'customers.nit', 'users.name', DB::raw("DATE_FORMAT(sales.date, '%d-%m-%Y') as date"), DB::raw('SUM(saledetails.quantity * saledetails.price) as total'))
+            ->where('sales.user_id', auth()->user()->id) // Filtrar por el ID del usuario autenticado
+            ->where(function ($query) use ($customer) {
+                $query->where('sales.customer_id', $customer->id);
+            })
+            ->groupBy('sales.id', 'sales.pay', 'customers.nit', 'users.name', 'sales.date')
+            ->orderBy('sales.id', 'desc')
+            ->get();
+
+        return view('admin.shop.customers.show', compact('customer', 'sales'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

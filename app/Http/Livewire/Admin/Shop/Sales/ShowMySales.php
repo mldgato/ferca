@@ -58,8 +58,8 @@ class ShowMySales extends Component
                             ->orWhere('users.name', 'LIKE', '%' . $this->search . '%');
                     })
                     ->groupBy('sales.id', 'sales.pay', 'customers.nit', 'users.name', 'sales.date')
-                    ->orderBy($this->sort, $this->direction)
                     ->orderBy('sales.id', 'desc')
+                    ->orderBy($this->sort, $this->direction)
                     ->paginate($this->cant);
             } else {
                 $sales = [];
