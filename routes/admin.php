@@ -40,7 +40,7 @@ Route::resource('customers', CustomerController::class)->names('admin.shop.custo
 
 Route::get('sales/products', [SalesController::class, 'products'])->name('admin.shop.sales.products');
 Route::get('sales/add_sale/{product}', [SalesController::class, 'add_sale'])->name('admin.shop.sales.add_sale');
-Route::get('sales/pdf/{id}', [SalesController::class, 'pdf'])->name('admin.shop.sales.pdf');
+Route::get('sales/{sale}/pdf', [SalesController::class, 'pdf'])->name('admin.shop.sales.pdf');
 Route::patch('sales/update_quantity', [SalesController::class, 'update_quantity'])->name('admin.shop.sales.update_quantity');
 Route::delete('sales/remove_from_cart', [SalesController::class, 'remove_from_cart'])->name('admin.shop.sales.remove_from_cart');
 Route::delete('sales/cancel_sale', [SalesController::class, 'cancel_sale'])->name('admin.shop.sales.cancel_sale');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Buy;
 use App\Models\Buydetail;
@@ -178,7 +179,7 @@ class BuyController extends Controller
         session()->flash('deletesale', 'La compra se ha eliminado exitosamente');
     }
 
-    public function pdf(Buy $buy)
+    public function pdf(Buy $buy, Request $request)
     {
         $pdf = new Dompdf();
         $html = view('admin.stocktaking.buys.pdf', compact('buy'))->render();
@@ -187,6 +188,15 @@ class BuyController extends Controller
         $pdf->setPaper('letter', 'portrait');
         $pdf->render();
 
-        return $pdf->stream('buy-' . $buy->id . '.pdf');
+        if ($request->has('download')) {
+            return $pdf->stream('buy-' . $buy->id . '.pdf');
+        }
+
+        // Cambiar el Content-Type para indicar que estamos enviando un PDF
+        $response = new Response($pdf->output());
+        $response->header('Content-Type', 'application/pdf');
+
+        // Abrir el PDF en una nueva pestaña del navegador
+        return $response;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Sale;
 use App\Models\Saledetail;
 use App\Models\Customer;
@@ -196,12 +197,24 @@ class SalesController extends Controller
         return view('admin.shop.sales.list');
     }
 
-    /* public function pdf($id)
+    public function pdf(Sale $sale, Request $request)
     {
-        $sale = Sale::with('saledetails.product')->find($id);
-
         $pdf = new Dompdf();
-        $pdf->loadView('sales.pdf', compact('sale'));
-        return $pdf->stream();
-    } */
+        $html = view('admin.shop.sales.pdf', compact('sale'))->render();
+
+        $pdf->loadHtml($html);
+        $pdf->setPaper('letter', 'portrait');
+        $pdf->render();
+
+        if ($request->has('download')) {
+            return $pdf->stream('sale-' . $sale->id . '.pdf');
+        }
+
+        // Cambiar el Content-Type para indicar que estamos enviando un PDF
+        $response = new Response($pdf->output());
+        $response->header('Content-Type', 'application/pdf');
+
+        // Abrir el PDF en una nueva pestaña del navegador
+        return $response;
+    }
 }

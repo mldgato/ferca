@@ -100,7 +100,7 @@
                                         <a href="{{ route('admin.shop.sales.show', $sale->id) }}"
                                             class="btn btn-primary btn-sm mr-2" title="Agregar a la compra"><i
                                                 class="fas fa-file-invoice-dollar"></i></a>
-                                        <a href="#{{-- {{ route('admin.stocktaking.buys.pdf', $sale->id) }} --}}"
+                                        <a href="{{ route('admin.shop.sales.pdf', $sale->id) }}"
                                             class="btn btn-danger btn-sm mr-2" title="PDF" target="_blank"><i
                                                 class="fas fa-file-pdf"></i></a>
                                     </td>
